@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>reveal.js</title>
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        </script>
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+                <section>
+
+
+                    <h1>Digital Signal Processing</h1>
+                    <p>Se refiere al:
+                        <ul>
+                            <li>Análisis</li>
+                            <li>Modificación</li>
+                            <li>Síntesis</li>
+                        </ul>
+                    </p>
+                </section>
+
+                <section>
+                    <h1>¿Que es una señal?</h1>
+                    <p>Latín --> <b>signalis</b></p>
+                    <p>Las señales son magnitudes físicas mediante las que se puede transmitir informacón.</p>
+                </section>
+
+                <section>
+                    <h1>titulo</h1>
+
+                    <table border="0">
+                        <!--<tr>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Age</th>
+                        </tr>-->
+                        <tr>
+                            <td>
+                                <li>Variable independiente/dependiente </li>
+                                <ul>
+                                    <li>Continua/Analógica</li>
+                                    <li>Discreta/Digital</li>
+                                </ul>
+                            </td>
+
+                            <td>Smith</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>Eve</td>
+                            <td>Jackson</td>
+                            <td>94</td>
+                        </tr>
+                    </table>
+
+                </section>
+
+                <section>
+                    <h1>Tipos de Señales</h1>
+
+                    <p>Pueden ser clasificadas según su:</p>
+                    <ul>
+                        <li>Variable independiente/dependiente </li>
+                        <ul>
+                            <li>Continua/Analógica</li>
+                            <li>Discreta/Digital</li>
+                        </ul>
+
+                        <li>Periodicidad</li>
+                        <ul>
+                            <li>Periodic signal</li>
+                            <li>Aperiodic signal</li>
+                        </ul>
+
+                        <li>Based on nature of indeterminancy</li>
+                        <ul>
+                            <li>Determinística</li>
+                            <li>Aleatoria</li>
+                        </ul>
+
+                        <li>Causalidad</li>
+                        <ul>
+                            <li>Causal</li>
+                            <li>Anti causal</li>
+                            <li>No causal</li>
+                        </ul>
+
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h1>Análisis</h1>
+                    <ul>
+                        <li>Temporal</li>
+                        <li>Espectral</li>
+                        <li>Cepstral</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h1>Procesamiento</h1>
+
+                </section>
+
+            </div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                dependencies: [{
+                        src: 'plugin/markdown/marked.js'
+                    },
+                    {
+                        src: 'plugin/markdown/markdown.js'
+                    },
+                    {
+                        src: 'plugin/notes/notes.js',
+                        async: true
+                    },
+                    {
+                        src: 'plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function() {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                ]
+            });
+        </script>
+    </body>
+
+</html>

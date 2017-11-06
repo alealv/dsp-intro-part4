@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title> Digital Signal Processing (DSP) </title>
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css">
+        <link rel="stylesheet" href="css/ale.css">
+
+
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section>
+
+
+                        <h1>Digital Signal Processing</h1>
+                    </section>
+                    <section>
+                        <h2>¿Qué es?</h2>
+                        <p>El <b>DSP</b> es una área de estudio que se encarga del <i>Análisis</i>, <i>Transformación</i> y <i>Síntesis</i> de la información representada de forma digital.
+                    </section>
+                </section>
+                <section>
+
+                    <section>
+                        <h2>¿Que es una señal?</h2>
+                        <p>Las <span id="hb">señales</span> son magnitudes <span id="hi">físicas</span> mediante las que se puede transmitir <span id="hi">informacion</span>.</p>
+                    </section>
+
+
+                    <section>
+                        <h2>Tipos de Señales</h2>
+                        <p style="text-align: left">Se pueden clasificar según:</p>
+                        <ul style="text-align: left">
+                            <li>Su naturaleza</li>
+                            <li>Tipo de variable independiente y dependiente</li>
+                            <li>Cantidad de variables y canales</li>
+                            <li>Periodicidad</li>
+                            <li>Paridad</li>
+
+                            <!--  Matemáticamente: función de una o más variables independientes
+                         Tipos, propiedades y clasificaciones de señales:
+                         Tiempo continuo, Tiempo discreto, Digitales
+                         Determinísticas, Estocásticas
+                         Un canal, Multi-canal
+                         Unidimensionales, Multidimensionales
+                         Duración Finita o Infinita
+                         Periódicas, Aperiódicas, Cuasi-periódicas
+                         Soporte izquierdo, derecho, doble
+                         Acotadas, No Acotadas
+                         Estables, Inestables -->
+
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Naturaleza</h3>
+                        <table id="unaTabla">
+                            <tr>
+                                <td>Determinística</td>
+                                <td>Estocastica</td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/deterministic_signal.jpg"> </td>
+                                <td><img src="img/stochastic_signal.jpg"> </td>
+                            </tr>
+                        </table>
+                    </section>
+
+                    <section>
+                        <h3>Tipo de Variable </h3>
+                        <table id="unaTabla">
+                            <tr>
+                                <th rowspan="4" class="verticalTableHeader">Dependiente</th>
+                                <th></th>
+                                <th colspan="2" style="text-align: center">Independiente</th>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>Continua</td>
+                                <td>Discreta</td>
+                            </tr>
+                            <tr>
+                                <td>Analógica</td>
+                                <td><img src="img/continuous_analog_signal.png"></td>
+                                <td><img src="img/discret_analog_signal.png"></td>
+                            </tr>
+                            <tr>
+                                <td>Digital</td>
+                                <td><img src="img/continous_%20digital_signal.png"></td>
+                                <td><img src="img/discrete_digital_signal.png"></td>
+                            </tr>
+                        </table>
+                        <!--                        Poner otro slide igual pero dejando solo la diagonal y tachando la diagonal traspuesta -->
+                    </section>
+
+                    <section>
+                        <h3>Periodicidad de la Señal</h3>
+                        <table id="unaTabla">
+                            <tr>
+                                <td>Periodica</td>
+                                <td>Aperiodica</td>
+                            </tr>
+                            <tr>
+                                <td>$$x(t+nT) = x_(t)$$</td>
+                                <td>$$x(t+nT) \neq x_(t)$$</td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/periodic_signal.png"></td>
+                                <td><img src="img/aperiodic_signal.png"></td>
+                            </tr>
+                        </table>
+                        <p style="text-align: center">Tambien existen señales <i style="color: red">quasi-periodicas</i> como el habla.</p>
+                    </section>
+
+                    <section>
+                        <h3>Paridad</h3>
+                        <table id="unaTabla">
+                            <tr>
+                                <td>Par</td>
+                                <td>Impar</td>
+                            </tr>
+                            <tr>
+                                <td>$$x_(t) = x(-t)$$</td>
+                                <td>$$x_(t) = -x(-t)$$</td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/even_signal.png"></td>
+                                <td><img src="img/odd_signal.png"></td>
+                            </tr>
+                        </table>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Análisis</h2>
+                        <div>Se busca conocer las <span id="hb">caracteristicas</span> principales de la señal, para luego poder <span id="hi">modelizarla</span> y <span id="hi">procesarla</span>.</div>
+                    </section>
+                    <section id="fragments">
+                        <h3>Tipos de Analisis</h3>
+                        <p>Se puede realizar en 3 campos diferentes:</p>
+                        <ul>
+                            <li class="fragment">Temporal/Espacial</li>
+                            <li class="fragment">Espectral</li>
+                            <li class="fragment">Cepstral</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4>Temporal/Espacial</h4>
+                        <table id="unaTabla">
+                            <tr>
+                                <th>Amplitud</th>
+                                <th>Magnitud</th>
+                                <th>Periodo</th>
+                                <th>Potencia Instantanea</th>
+                                <th>Potencia Media</th>
+                            </tr>
+                            <tr>
+                                <td>$$x_{[n]}$$</td>
+                                <td>$$\left|x_{[n]}\right|$$</td>
+                                <td>$$x_{[n]} = x_{[n+N]}$$</td>
+                                <td>$${x_{[n]}}^2$$</td>
+                                <td>$$\frac{1}{N}\sum_{n=0}^{N} {x_{[n]}}^2$$</td>
+                            </tr>
+                            <tr>
+                                <th>Autocorrelacion</th>
+                                <th>Magnitud</th>
+                                <th>Periodo</th>
+                                <th>Potencia</th>
+                            </tr>
+                            <tr>
+                                <td>$$x_{(t)}$$</td>
+                                <td>$$\left|x_{(t)}\right|$$</td>
+                                <td>$$x_{(t)} = x_{(t+T)}$$</td>
+                                <td>$$\left|x_{(t)}\right|^2$$</td>
+                            </tr>
+                        </table>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Muestreo</h2>
+                    <p>Para digitalizar una señal </p>
+                </section>
+
+
+
+                <section>
+                    <h2>Señales tipicas</h2>
+                    <p>Existen señales que debido a sus caracteristicas, son muy utilizadas en el area:</p>
+                    <ul>
+                        <li>Coseno/Seno</li>
+                        <li>Exponencial Compleja</li>
+                        <li>Delta</li>
+                        <li>Cuadrada</li>
+                        <li>Rampa</li>
+                    </ul>
+                </section>
+
+
+                <section>
+                    <h1>Procesamiento</h1>
+
+                </section>
+            </div>
+        </div>
+
+
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://gitdub.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                math: {
+                    mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+                    config: 'TeX-AMS_HTML-full' // See http://docs.mathjax.org/en/latest/config-files.html
+                },
+                dependencies: [{
+                        src: 'plugin/markdown/marked.js'
+                    },
+                    {
+                        src: 'plugin/markdown/markdown.js'
+                    },
+                    {
+                        src: 'plugin/math/math.js',
+                        async: true
+                    }
+                ],
+                progress: false,
+            });
+        </script>
+    </body>
+
+</html>
