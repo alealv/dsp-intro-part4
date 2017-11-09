@@ -3,12 +3,41 @@
     vertical-align: middle;
     width: 100%;
     height: 100%;
-    border: none;
+    border: none !important;
 }
 
-#unaTabla th, td{
+#unaTabla th, #unaTabla tr, #unaTabla td{
     text-align: center;
     vertical-align: middle;
+    border: none !important;
+}
+
+#borderTable table{
+    margin-top: 5em;
+}
+
+#borderTable th{
+/*    align-self: center;*/
+    vertical-align: middle;
+/*    align-content: left;*/
+    text-align: center;
+    border: 2px solid darkorange;
+}
+
+
+#borderTable td{
+/*    align-self: center;*/
+    vertical-align: middle;
+/*    align-content: left;*/
+    text-align: left;
+    border: 2px solid darkorange;
+}
+
+#fourierTable th, #fourierTable td{
+/*    align-self: center;*/
+    vertical-align: middle;
+/*    align-content: left;*/
+    text-align: center;
     border: none;
 }
 
@@ -21,8 +50,9 @@
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     -o-transform: rotate(90deg);
-    transform: rotate(90deg);
+    transform: rotate(-90deg);
     border: none;
+    margin: 0%;
 }
 .verticalTableHeader p {
     margin:0 -100% ;
@@ -43,12 +73,32 @@ table {
 }
 */
 
-#hb {
-    font-weight: bold;
+#him {
+    font-style: italic;
     color: magenta;
 }
 
-#hi {
+#hig {
+    font-style: italic;
+    color: darkgoldenrod;
+}
+
+#hbm {
     font-style: italic;
     color: magenta;
+}
+
+#hbg {
+    font-style: italic;
+    color: darkgoldenrod;
+}
+
+
+h2, h3, h4 {
+    margin:  0 0 0 0 !important; 
+    background-color: darkcyan;
+}
+
+html.dimbg .slide-background {
+    opacity: 0.2 !important;
 }
