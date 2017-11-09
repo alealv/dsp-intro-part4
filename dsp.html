@@ -10,8 +10,19 @@
         <link rel="stylesheet" href="css/reveal.css">
         <link rel="stylesheet" href="css/theme/black.css">
         <link rel="stylesheet" href="css/ale.css">
+        
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
 
-
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        </script>
+        
     </head>
 
     <body>
@@ -345,7 +356,7 @@
                         </dl>
 -->
                             <p class="fragment" data-fragment-index="1" style="text-align: left">La <span id="hig">polar</span> es la más utilizada, pero suele expresarse en <span id="him">decibeles</span>:</p>
-                            <p class="fragment" data-fragment-index="1">$$\|X_{(\omega)}\|_{dB} = 20\cdot\log_{10}\left( \frac{\|X_{(\omega)}\|}{argmax(\|X_{(\omega)}\|)}\right)$$</p>
+                            <p class="fragment" data-fragment-index="1">$$\|X_{(\omega)}\|_{dB} = 20\cdot\log_{10}\left( \|X_{(\omega)}\|\right)$$</p>
                         </div>
                     </section>
 
@@ -643,7 +654,7 @@
                     <section>
                         <h2>Muestreo</h2>
                         <p>La teoría de muestreo de <span style="color: darkgoldenrod">Nyquist–Shannon</span> establece que la frecuencia de muestreo debe ser por lo menos el <span id="him">doble</span> que la <span id="him">frecuencia maxima</span> de la
-                            señal, para no peder información.</p>
+                            señal, para no perder información.</p>
                         <!--                        <p>$f_{s} \ge 2 \cdot argmax\left(f_{x(t)}\right)$</p>-->
                         <p>$f_{s} \ge 2 f_{max}$</p>
                     </section>
@@ -698,18 +709,18 @@
                                     <span class="fragment" data-fragment-index="1">Transformada Continua de Fourier</span>
                                 </th>
                                 <th>
-                                    <span class="fragment" data-fragment-index="3">Transformada de Laplace</span>
+                                    <span class="fragment" data-fragment-index="3">Transformada de Discreta de Fourier</span>
                                 </th>
                             </tr>
                             <tr>
                                 <th style="color: red">
-                                    Energía Ifinita
+                                    Energía Infinita
                                 </th>
                                 <th>
-                                    <span class="fragment" data-fragment-index="2">Transformada Discreta de Fourier</span>
+                                    <span class="fragment" data-fragment-index="2">Transformada de Laplace</span>
                                 </th>
                                 <th>
-                                    <span class="fragment" data-fragment-index="4">Transformada de Z</span>
+                                    <span class="fragment" data-fragment-index="4">Transformada Z</span>
                                 </th>
                             </tr>
                         </table>
@@ -762,6 +773,13 @@
                     {
                         src: 'plugin/math/math.js',
                         async: true
+                    },
+                    {
+                        src: 'plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function() {
+                            hljs.initHighlightingOnLoad();
+                        }
                     }
                 ],
                 progress: false,
