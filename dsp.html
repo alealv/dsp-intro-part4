@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="css/reveal.css">
         <link rel="stylesheet" href="css/theme/black.css">
         <link rel="stylesheet" href="css/ale.css">
-        
+
         <!-- Theme used for syntax highlighting of code -->
         <link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -22,7 +22,7 @@
             link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
             document.getElementsByTagName('head')[0].appendChild(link);
         </script>
-        
+
     </head>
 
     <body>
@@ -609,12 +609,17 @@
 
                     <section>
                         <h3>Sistemas LTI - Respuesta al Impulso</h3>
-                        <div style="font-size: 30pt">
+                        <div style="font-size: 27pt">
                             <p style="text-align: left">Una señal puede descomponerse en una serie de deltas:</p>
                             <p>$$x_{[n]} = \sum_{k=-\infty}^\infty x_{[k]} \delta_{[n-k]} \qquad x_{(t)} = \int \limits_{T=-\infty}^\infty x_{(\tau)} \delta_{(t-\tau)} d\tau$$</p>
 
                             <p class="fragment" data-fragment-index="1" style="text-align: left">Entonces:</p>
-                            <p class="fragment" data-fragment-index="1">$$y_{[n]} = x_{[n]}*h_{[n]} = \sum_{k=-\infty}^\infty x_{[k]} h_{[n-k]} \qquad T\left[ \delta_{[n-k]} \right]$$</p>
+                            <p class="fragment" data-fragment-index="1">
+                                $$ y_{[n]} = T\left[\sum_{k=-\infty}^\infty x_{[k]} \delta_{[n-k]}\right] \quad \Longrightarrow \quad y_{[n]} = \sum_{k=-\infty}^\infty x_{[k]} T\left[\delta_{[n-k]}\right] $$
+                            </p>
+                            <p class="fragment" data-fragment-index="2">
+                                $$ h_{[n-k]} = T\left[ \delta_{[n-k]} \right] \quad \Longrightarrow \quad y_{[n]} = \sum_{k=-\infty}^\infty x_{[k]} h_{[n-k]} $$
+                            </p>
 
                             <!--                            <p style="text-align: left">donde:</p>-->
                             <!--                            <p>$$T\left[ \delta_{[n-k]} \right]$$</p>-->
@@ -623,8 +628,15 @@
 
                     <section>
                         <h3>Sistemas LTI - Respuesta al Impulso</h3>
-                        <p style="text-align: left">Recordando la propiedad de convolución de la Transformada de Fourier:</p>
-                        <p>$$ y_{[n]}=x_{[n]}*h_{[n]} \Longrightarrow Y_{[k]}=X_{[k]}H_{[k]}$$</p>
+                        <p style="font-size: 25pt; text-align: left">Por lo tanto, cualquier <span id="him">Sistema LTI</span> se puede definir por su respuesta al impulso.
+                            <span class="fragment" data-fragment-index="1">Y la salida de ese sistema estará dada por la <span id="him">convolución</span> de la entrada por su respuesa al impulso: </span>
+                        </p>
+
+                        <p class="fragment" data-fragment-index="1">$$y_{[n]} = x_{[n]}*h_{[n]} = \sum_{k=-\infty}^\infty x_{[k]} h_{[n-k]} $$</p>
+                        <p class="fragment" data-fragment-index="2" style="font-size: 25pt; text-align: left">Finalmente, recordando la propiedad de convolución de la Transformada de Fourier:</p>
+                        <p class="fragment" data-fragment-index="2" style="color: gold">
+                            $$ y_{[n]}=x_{[n]}*h_{[n]} \Longrightarrow Y_{[k]}=X_{[k]}H_{[k]} $$
+                        </p>
                     </section>
 
                 </section>
@@ -709,7 +721,7 @@
                                     <span class="fragment" data-fragment-index="1">Transformada Continua de Fourier</span>
                                 </th>
                                 <th>
-                                    <span class="fragment" data-fragment-index="3">Transformada de Discreta de Fourier</span>
+                                    <span class="fragment" data-fragment-index="2">Transformada Discreta de Fourier</span>
                                 </th>
                             </tr>
                             <tr>
@@ -717,7 +729,7 @@
                                     Energía Infinita
                                 </th>
                                 <th>
-                                    <span class="fragment" data-fragment-index="2">Transformada de Laplace</span>
+                                    <span class="fragment" data-fragment-index="3">Transformada de Laplace</span>
                                 </th>
                                 <th>
                                     <span class="fragment" data-fragment-index="4">Transformada Z</span>
@@ -760,10 +772,15 @@
             // - https://gitdub.com/hakimel/reveal.js#configuration
             // - https://github.com/hakimel/reveal.js#dependencies
             Reveal.initialize({
+                // Push each slide change to the browser history
+                history: true,
+                progress: false,
+
                 math: {
                     mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
                     config: 'TeX-AMS_HTML-full' // See http://docs.mathjax.org/en/latest/config-files.html
                 },
+
                 dependencies: [{
                         src: 'plugin/markdown/marked.js'
                     },
@@ -782,7 +799,6 @@
                         }
                     }
                 ],
-                progress: false,
             });
         </script>
     </body>
