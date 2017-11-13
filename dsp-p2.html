@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title> Digital Signal Processing (DSP) </title>
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css">
+        <link rel="stylesheet" href="css/ale.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        </script>
+
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+                <section data-background-image="img/dsp.jpg" data-state="dimbg">
+                    <h1>Introduccion al Procesamiento Digital de Señales</h1>
+                    <h2 style="background-color: darkred">Parte 2</h2>
+                </section>
+
+
+                <section>
+                    <h2>Filtro de Winner</h2>
+                    <p>
+
+                    </p>
+                </section>
+
+
+                <section>
+
+                    <section>
+                        <h2>Filtro de Kalman</h2>
+                        <p>
+                            Es un <span id="him">algoritmo recursivo</span> desarrollado por <i>Rudolf E. Kalman</i> en 1960 que permite estimar el <span id="him">estado oculto</span> de un <span id="him">sistema dinámico lineal</span>, cuando este está
+                            sometido a <span id="him">ruido blanco aditivo</span>, minimazando el error cuadrático medio.
+                        </p>
+                    </section>
+
+
+                    <section>
+                        <h3>Filtro de Kalman - Aplicaciones</h3>
+                        <p style="text-align: left">Existen numerosas aplicaciones, pero principalmente se utiliza para:</p>
+                        <ul style="text-align: left; margin-left: -5em">
+                            <li>Seguimiento de objetos</li>
+                            <li>Economía</li>
+                            <li>Navegación</li>
+                            <li>Visión artificial</li>
+                            <li>Fusión de sensores</li>
+                        </ul>
+                    </section>
+
+
+                    <section>
+                        <h3>Filtro de Kalman - Características</h3>
+                        <ul style="text-align: left">
+                            <li>Se utiliza en sistemas:
+                                <ul>
+                                    <li>Discretos</li>
+                                    <li>Lineales</li>
+                                    <li>Con ruido blanco aditivo</li>
+                                </ul>
+                            </li>
+                            <li>Permite la <span id="him">fusión de sensores</span>.</li>
+                            <li>Solo utiliza:</li>
+                            <ul>
+                                <ul>
+                                    <li>
+                                        Módelo del sistema
+                                    </li>
+                                    <li>
+                                        Estado previo
+                                    </li>
+                                    <li>
+                                        Incertidumbre del modelo
+                                    </li>
+                                    <li>
+                                        Mediciones actuales
+                                    </li>
+                                    <li>
+                                        Incertidumbre de la medición
+                                    </li>
+                                </ul>
+                            </ul>
+                        </ul>
+                    </section>
+
+                    <section>
+
+                    </section>
+
+                    <section>
+                        <h3>Filtro de Kalman - Sistema LTI</h3>
+                        <table id="unaTabla">
+                            <tr>
+                                <th style="color: indianred">
+                                    Continua
+                                </th>
+                                <th style="color: deepskyblue">
+                                    Discreta
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>$$ \left\{\begin{aligned} \dot{\mathbf{x}}_{(t)} &amp;= A \mathbf{x}_{(t)} + B \mathbf{u}_{(t)} \\ \mathbf{y}_{(t)} &amp;= C \mathbf{x}_{(t)} + D \mathbf{u}_{(t)} \end{aligned} \right. $$
+                                </td>
+                                <td>$$ \left\{\begin{aligned} \mathbf{x}_{[k+1]} &amp;= A \mathbf{x}_{[k]} + B \mathbf{u}_{[k]} \\ \mathbf{y}_{[k]} &amp;= C \mathbf{x}_{[k]} + D \mathbf{u}_{[k]} \end{aligned} \right. $$
+                                </td>
+                            </tr>
+                        </table>
+                        <img src="img/Typical_State_Space_model.png" width="650px">
+                        <p class="fragment">
+                            A esto se lo denomina <span id="him">Espacio de estados</span>
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Filtro de Kalman - Sistema LTI</h3>
+                        <p style="text-align: left; margin-left: 1em">$\mathbf{x}  \quad$ es el Vector de Estado </p>
+                        <p style="text-align: left; margin-left: 1em">$\mathbf{y}  \quad$ es el Vector de Salida </p>
+                        <p style="text-align: left; margin-left: 1em">$\mathbf{u}  \quad$ es el Vector de contro </p>
+
+                        <p style="text-align: left; margin-left: 1em">$A \quad$ es la matriz de estados </p>
+                        <p style="text-align: left; margin-left: 1em">$B \quad$ es la matriz de entrada </p>
+                        <p style="text-align: left; margin-left: 1em">$C \quad$ es la matriz de salida </p>
+                        <p style="text-align: left; margin-left: 1em">$D \quad$ es la matriz de Transmisión Directa </p>
+
+                    </section>
+
+                </section>
+
+
+                <section>
+                    <h2>Filtro de Partículas</h2>
+                    <p>
+
+                    </p>
+                </section>
+
+
+            </div>
+        </div>
+
+
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            Reveal.addEventListener('fragmentshown', function(event) {
+                document.getElementById("postfragment").style.background = "forestgreen";
+            });
+        </script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://gitdub.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                // Push each slide change to the browser history
+                history: true,
+                progress: false,
+
+                math: {
+                    mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+                    config: 'TeX-AMS_HTML-full' // See http://docs.mathjax.org/en/latest/config-files.html
+                },
+
+                dependencies: [{
+                        src: 'plugin/markdown/marked.js'
+                    },
+                    {
+                        src: 'plugin/markdown/markdown.js'
+                    },
+                    {
+                        src: 'plugin/math/math.js',
+                        async: true
+                    },
+                    {
+                        src: 'plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function() {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                ],
+            });
+        </script>
+    </body>
+
+</html>

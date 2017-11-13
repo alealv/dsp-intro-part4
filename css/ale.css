@@ -6,46 +6,44 @@
     border: none !important;
 }
 
-#unaTabla th, #unaTabla tr, #unaTabla td{
+#unaTabla th, #unaTabla tr, #unaTabla td {
     text-align: center;
     vertical-align: middle;
     border: none !important;
 }
 
-#borderTable table{
+#borderTable table {
     margin-top: 5em;
 }
 
-#borderTable th{
-/*    align-self: center;*/
+#borderTable th {
+    /*    align-self: center;*/
     vertical-align: middle;
-/*    align-content: left;*/
+    /*    align-content: left;*/
     text-align: center;
     border: 2px solid darkorange;
 }
 
-
-#borderTable td{
-/*    align-self: center;*/
+#borderTable td {
+    /*    align-self: center;*/
     vertical-align: middle;
-/*    align-content: left;*/
+    /*    align-content: left;*/
     text-align: left;
     border: 2px solid darkorange;
 }
 
-#fourierTable th, #fourierTable td{
-/*    align-self: center;*/
+#fourierTable th, #fourierTable td {
+    /*    align-self: center;*/
     vertical-align: middle;
-/*    align-content: left;*/
+    /*    align-content: left;*/
     text-align: center;
     border: none;
 }
 
-
 .verticalTableHeader {
-    text-align:center;
-    white-space:nowrap;
-    g-origin:50% 50%;
+    text-align: center;
+    white-space: nowrap;
+    g-origin: 50% 50%;
     -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
@@ -54,17 +52,21 @@
     border: none;
     margin: 0%;
 }
+
 .verticalTableHeader p {
-    margin:0 -100% ;
-    display:inline-block;
+    margin: 0 -100%;
+    display: inline-block;
 }
-.verticalTableHeader p:before{
-    content:'';
-    width:0;
-    padding-top:110%;/* takes width as reference, + 10% for faking some extra padding */
-    display:inline-block;
-    vertical-align:middle;
+
+.verticalTableHeader p:before {
+    content: '';
+    width: 0;
+    padding-top: 110%;
+    /* takes width as reference, + 10% for faking some extra padding */
+    display: inline-block;
+    vertical-align: middle;
 }
+
 /*
 table {
     text-align:cenzter;
@@ -93,9 +95,8 @@ table {
     color: darkgoldenrod;
 }
 
-
 h2, h3, h4 {
-    margin:  0 0 0 0 !important; 
+    margin: 0 0 0 0 !important;
     background-color: darkcyan;
 }
 
