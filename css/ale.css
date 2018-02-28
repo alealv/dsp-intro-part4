@@ -103,3 +103,6 @@ h2, h3, h4 {
 html.dimbg .slide-background {
     opacity: 0.2 !important;
 }
+
+dt, dd { margin-top: 20px !important;  }
+dt { clear: both; }
