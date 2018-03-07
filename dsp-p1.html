@@ -1,220 +1,221 @@
 <!doctype html>
 <html>
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <title> Digital Signal Processing (DSP) </title>
+    <title> Digital Signal Processing (DSP) </title>
 
-        <link rel="stylesheet" href="css/reveal.css">
-        <link rel="stylesheet" href="css/theme/black.css">
-        <link rel="stylesheet" href="css/ale.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/ale.css">
 
-        <!-- Theme used for syntax highlighting of code -->
-        <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
 
-        <!-- Printing and PDF exports -->
-        <script>
-            var link = document.createElement('link');
-            link.rel = 'stylesheet';
-            link.type = 'text/css';
-            link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
-            document.getElementsByTagName('head')[0].appendChild(link);
-        </script>
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
 
-    </head>
+    </script>
 
-    <body>
-        <div class="reveal">
-            <div class="slides">
+</head>
 
-                <section data-background-image="img/dsp.jpg" data-state="dimbg">
-                    <h1>Introduccion al Procesamiento Digital de Señales</h1>
-                    <h2 style="background-color: darkred">Parte 1</h2>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section data-background-image="img/dsp.jpg" data-state="dimbg">
+                <h1>Introduccion al Procesamiento Digital de Señales</h1>
+                <h2 style="background-color: darkred">Parte 1</h2>
+            </section>
+
+
+            <!-- INTRODUCCIÓN -->
+            <section>
+
+                <section>
+                    <h2>¿Qué es?</h2>
+                    <p>El <span id="hig">DSP</span> es una área de estudio que se encarga del <span id="him">Análisis</span>, <span id="him">Transformación</span> y <span id="him">Síntesis</span> de señales digitales.
                 </section>
 
 
-                <!-- INTRODUCCIÓN -->
                 <section>
-
-                    <section>
-                        <h2>¿Qué es?</h2>
-                        <p>El <span id="hig">DSP</span> es una área de estudio que se encarga del <span id="him">Análisis</span>, <span id="him">Transformación</span> y <span id="him">Síntesis</span> de señales digitales.
-                    </section>
-
-
-                    <section>
-                        <h2>¿Qué es una señal digital?</h2>
-                        <p>Las <span id="hig">señales</span> son magnitudes <span id="him">físicas</span> mediante las que se puede transmitir <span id="him">información</span>.</p>
-                        <p class="fragment">El que sean <span id="hig">digitales</span> hace referencia a que sus variables se encuentran <span id="him">discretizadas</span>.</p>
-                    </section>
+                    <h2>¿Qué es una señal digital?</h2>
+                    <p>Las <span id="hig">señales</span> son magnitudes <span id="him">físicas</span> mediante las que se puede transmitir <span id="him">información</span>.</p>
+                    <p class="fragment">El que sean <span id="hig">digitales</span> hace referencia a que sus variables se encuentran <span id="him">discretizadas</span>.</p>
+                </section>
 
 
-                    <section>
-                        <h2>Tipos de Señales</h2>
-                        <p style="text-align: left">Se pueden clasificar según:</p>
-                        <ul style="text-align: left">
-                            <li>Dominio</li>
-                            <li>Su naturaleza</li>
-                            <li>Periodicidad</li>
-                            <li>Paridad</li>
-                            <li>Cantidad de canales y/o variables</li>
+                <section>
+                    <h2>Tipos de Señales</h2>
+                    <p style="text-align: left">Se pueden clasificar según:</p>
+                    <ul style="text-align: left">
+                        <li>Dominio</li>
+                        <li>Su naturaleza</li>
+                        <li>Periodicidad</li>
+                        <li>Paridad</li>
+                        <li>Cantidad de canales y/o variables</li>
 
-                        </ul>
-                    </section>
+                    </ul>
+                </section>
 
-                    <section>
-                        <h3>Tipos de Señales - Dominio</h3>
-                        <table id="unaTabla" style="margin-left: -1em; font-size: 25pt">
-                            <!--
+                <section>
+                    <h3>Tipos de Señales - Dominio</h3>
+                    <table id="unaTabla" style="margin-left: -1em; font-size: 25pt">
+                        <!--
                             <tr>
                                 <th >Dependiente</th>
                                 <th colspan="2" style="text-align: center">Independiente</th>
                             </tr>
 -->
-                            <tr>
-                                <td></td>
-                                <td style="color: deepskyblue">Tiempo Continuo</td>
-                                <td style="color: indianred">Tiempo Discreto</td>
-                            </tr>
-                            <tr>
-                                <td style="color: deepskyblue">Amplitud Continua</td>
-                                <!--
+                        <tr>
+                            <td></td>
+                            <td style="color: deepskyblue">Tiempo Continuo</td>
+                            <td style="color: indianred">Tiempo Discreto</td>
+                        </tr>
+                        <tr>
+                            <td style="color: deepskyblue">Amplitud Continua</td>
+                            <!--
                                 <td style="height: 200px"><img src="img/continuous_analog_signal.png" style="border: none" width="300px"></td>
                                 <td style="height: 200px"><img src="img/discret_analog_signal.png" style="border: none" width="300px"></td>
 -->
-                                <td colspan="2" rowspan="2">
-                                    <img src="img/maxresdefault.png" style="background-color: white" width="750px">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="color: indianred">Amplitud Discreta</td>
-                                <!--
+                            <td colspan="2" rowspan="2">
+                                <img src="img/maxresdefault.png" style="background-color: white" width="750px">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="color: indianred">Amplitud Discreta</td>
+                            <!--
                                 <td style="height: 200px"><img src="img/continous_%20digital_signal.png" style="border: none" width="300px"></td>
                                 <td style="height: 200px"><img src="img/discrete_digital_signal.png" style="border: none" width="300px"></td>
 -->
-                            </tr>
-                        </table>
-                        <!--                        Poner otro slide igual pero dejando solo la diagonal y tachando la diagonal traspuesta -->
-                    </section>
+                        </tr>
+                    </table>
+                    <!--                        Poner otro slide igual pero dejando solo la diagonal y tachando la diagonal traspuesta -->
+                </section>
 
 
-                    <section>
-                        <h3>Tipos de Señales - Naturaleza</h3>
-                        <table id="unaTabla">
-                            <tr>
-                                <td style="color: deepskyblue">Determinística</td>
-                                <td style="color: indianred">Estocástica</td>
-                            </tr>
-                            <tr>
-                                <td><img src="img/deterministic_signal2.png" style="background-color: white"> </td>
-                                <td><img src="img/stochastic_signal2.png" style="background-color: white"> </td>
-                            </tr>
-                        </table>
-                    </section>
+                <section>
+                    <h3>Tipos de Señales - Naturaleza</h3>
+                    <table id="unaTabla">
+                        <tr>
+                            <td style="color: deepskyblue">Determinística</td>
+                            <td style="color: indianred">Estocástica</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/deterministic_signal2.png" style="background-color: white"> </td>
+                            <td><img src="img/stochastic_signal2.png" style="background-color: white"> </td>
+                        </tr>
+                    </table>
+                </section>
 
-                    <section>
-                        <h3>Tipos de Señales - Periodicidad</h3>
-                        <table id="unaTabla">
-                            <tr>
-                                <td style="color: deepskyblue">Periódica</td>
-                                <td style="color: indianred">Áperiódica</td>
-                            </tr>
-                            <tr>
-                                <td><img src="img/periodic_signal.png" style="border: none"></td>
-                                <td><img src="img/aperiodic_signal.png" style="border: none"></td>
-                            </tr>
-                            <tr>
-                                <td>$$x_{(t+nT)} = x_{(t)}$$</td>
-                                <td>$$x_{(t+nT)} \neq x_{(t)}$$</td>
-                            </tr>
-                        </table>
-                        <p class="fragment" style="text-align: center">También existen señales <i style="color: red">cuasi-periódicas</i> como el habla.</p>
-                    </section>
+                <section>
+                    <h3>Tipos de Señales - Periodicidad</h3>
+                    <table id="unaTabla">
+                        <tr>
+                            <td style="color: deepskyblue">Periódica</td>
+                            <td style="color: indianred">Áperiódica</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/periodic_signal.png" style="border: none"></td>
+                            <td><img src="img/aperiodic_signal.png" style="border: none"></td>
+                        </tr>
+                        <tr>
+                            <td>$$x_{(t+nT)} = x_{(t)}$$</td>
+                            <td>$$x_{(t+nT)} \neq x_{(t)}$$</td>
+                        </tr>
+                    </table>
+                    <p class="fragment" style="text-align: center">También existen señales <i style="color: red">cuasi-periódicas</i> como el habla.</p>
+                </section>
 
-                    <section>
-                        <h3>Tipos de Señales - Paridad</h3>
-                        <table id="unaTabla">
-                            <tr>
-                                <td style="color: deepskyblue">Par</td>
-                                <td style="color: indianred">Impar</td>
-                            </tr>
-                            <tr>
-                                <td><img src="img/even_signal.png" style="border: none" height="150px"></td>
-                                <td><img src="img/odd_signal.png" style="border: none" height="150px"></td>
-                            </tr>
-                            <tr>
-                                <td>$$x_{(t)} = x_{(-t)}$$</td>
-                                <td>$$x_{(t)} = -x_{(-t)}$$</td>
-                            </tr>
-                        </table>
-                    </section>
-                    <section>
-                        <h3>Tipos de Señales - Canales y Variables</h3>
-                        <table id="unaTabla">
-                            <tr>
-                                <td style="color: deepskyblue">Multi-canal</td>
-                                <td style="color: indianred">Multi-dimensional</td>
-                            </tr>
-                            <tr>
-                                <td><img src="img/multicanal.png"></td>
-                                <td><img src="img/multidimensional.png" style="background-color: white"></td>
-                            </tr>
-                        </table>
-                    </section>
+                <section>
+                    <h3>Tipos de Señales - Paridad</h3>
+                    <table id="unaTabla">
+                        <tr>
+                            <td style="color: deepskyblue">Par</td>
+                            <td style="color: indianred">Impar</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/even_signal.png" style="border: none" height="150px"></td>
+                            <td><img src="img/odd_signal.png" style="border: none" height="150px"></td>
+                        </tr>
+                        <tr>
+                            <td>$$x_{(t)} = x_{(-t)}$$</td>
+                            <td>$$x_{(t)} = -x_{(-t)}$$</td>
+                        </tr>
+                    </table>
+                </section>
+                <section>
+                    <h3>Tipos de Señales - Canales y Variables</h3>
+                    <table id="unaTabla">
+                        <tr>
+                            <td style="color: deepskyblue">Multi-canal</td>
+                            <td style="color: indianred">Multi-dimensional</td>
+                        </tr>
+                        <tr>
+                            <td><img src="img/multicanal.png"></td>
+                            <td><img src="img/multidimensional.png" style="background-color: white"></td>
+                        </tr>
+                    </table>
+                </section>
 
 
 
+
+            </section>
+
+            <section>
+                <h2>Análisis</h2>
+                <div>Se busca conocer las <span id="hig">características</span> principales de la señal, para luego poder <span id="him">modelizarla</span> y <span id="him">procesarla</span>.</div>
+                <p class="fragment" style="text-align: left">Se puede realizar en 3 dominios diferentes:</p>
+                <ul>
+                    <li class="fragment">Temporal (o Espacial)</li>
+                    <li class="fragment">Espectral</li>
+                    <li class="fragment">Cepstral (Homomorfico)</li>
+                </ul>
+            </section>
+
+            <section>
+                <section>
+                    <h3>Análisis Temporal</h3>
+                    <p style="font-size: 30pt">Estudia las variaciones de la señal en función del tiempo.</p>
+                    <img src="img/mediciones_en_el_tiempo.png" style="background-color: white; float: left" width="300px">
+                    <p style="margin-top: 2em">$x_{(t)} = A \cdot \cos (\omega t + \varphi)$</p>
+                    <p>$\omega = 2 \pi f \quad \wedge \quad f = \frac{1}{T}$</p>
 
                 </section>
 
                 <section>
-                    <h2>Análisis</h2>
-                    <div>Se busca conocer las <span id="hig">características</span> principales de la señal, para luego poder <span id="him">modelizarla</span> y <span id="him">procesarla</span>.</div>
-                    <p class="fragment" style="text-align: left">Se puede realizar en 3 dominios diferentes:</p>
-                    <ul>
-                        <li class="fragment">Temporal (o Espacial)</li>
-                        <li class="fragment">Espectral</li>
-                        <li class="fragment">Cepstral (Homomorfico)</li>
-                    </ul>
+                    <h3>Análisis Temporal</h3>
+                    <p style="font-size: 30pt; text-align: left">Comumente, se toman las siguientes métricas:</p>
+                    <table id="unaTabla" style="font-size: 25pt">
+                        <tr>
+                            <th class="fragment" data-fragment-index="1" style="color: darkgoldenrod">Amplitud</th>
+                            <th class="fragment" data-fragment-index="2" style="color: darkgoldenrod">Período</th>
+                            <th class="fragment" data-fragment-index="3" style="color: darkgoldenrod">Fase</th>
+                            <th class="fragment" data-fragment-index="4" style="color: darkgoldenrod">Energía</th>
+                            <th class="fragment" data-fragment-index="5" style="color: darkgoldenrod">Potencia</th>
+                            <th class="fragment" data-fragment-index="6" style="color: darkgoldenrod">RMS</th>
+                        </tr>
+                        <tr>
+                            <td class="fragment" data-fragment-index="1">$$x_{[n]}$$</td>
+                            <td class="fragment" data-fragment-index="2">$$T = \frac{1}{f}$$</td>
+                            <td class="fragment" data-fragment-index="3">$$\varphi$$</td>
+                            <td class="fragment" data-fragment-index="4">$$\sum \limits_{\lt N \gt}{\left|x_{[n]}\right|}^2$$</td>
+                            <td class="fragment" data-fragment-index="5">$$\frac{1}{N}\sum_{\lt N \gt} {\left|x_{[n]}\right|}^2$$</td>
+                            <td class="fragment" data-fragment-index="6">$$\sqrt{\frac{1}{N}\sum_{\lt N \gt} {x_{[n]}}^2}$$</td>
+                        </tr>
+                    </table>
                 </section>
 
-                <section>
-                    <section>
-                        <h3>Análisis Temporal</h3>
-                        <p style="font-size: 30pt">Estudia las variaciones de la señal en función del tiempo.</p>
-                        <img src="img/mediciones_en_el_tiempo.png" style="background-color: white; float: left" width="300px">
-                        <p style="margin-top: 2em">$x_{(t)} = A \cdot \cos (\omega t + \varphi)$</p>
-                        <p>$\omega = 2 \pi f \quad \wedge \quad f = \frac{1}{T}$</p>
 
-                    </section>
-
-                    <section>
-                        <h3>Análisis Temporal</h3>
-                        <p style="font-size: 30pt; text-align: left">Comumente, se toman las siguientes métricas:</p>
-                        <table id="unaTabla" style="font-size: 25pt">
-                            <tr>
-                                <th class="fragment" data-fragment-index="1" style="color: darkgoldenrod">Amplitud</th>
-                                <th class="fragment" data-fragment-index="2" style="color: darkgoldenrod">Período</th>
-                                <th class="fragment" data-fragment-index="3" style="color: darkgoldenrod">Fase</th>
-                                <th class="fragment" data-fragment-index="4" style="color: darkgoldenrod">Energía</th>
-                                <th class="fragment" data-fragment-index="5" style="color: darkgoldenrod">Potencia</th>
-                                <th class="fragment" data-fragment-index="6" style="color: darkgoldenrod">RMS</th>
-                            </tr>
-                            <tr>
-                                <td class="fragment" data-fragment-index="1">$$x_{[n]}$$</td>
-                                <td class="fragment" data-fragment-index="2">$$T = \frac{1}{f}$$</td>
-                                <td class="fragment" data-fragment-index="3">$$\varphi$$</td>
-                                <td class="fragment" data-fragment-index="4">$$\sum \limits_{\lt N \gt}{\left|x_{[n]}\right|}^2$$</td>
-                                <td class="fragment" data-fragment-index="5">$$\frac{1}{N}\sum_{\lt N \gt} {\left|x_{[n]}\right|}^2$$</td>
-                                <td class="fragment" data-fragment-index="6">$$\sqrt{\frac{1}{N}\sum_{\lt N \gt} {x_{[n]}}^2}$$</td>
-                            </tr>
-                        </table>
-                    </section>
-
-
-                    <!--
+                <!--
                     <section>
                         <h3>Análisis Temporal</h3>
                         <p>Para las señals <span id="him">estocasticas</span>, debe hacerse un analisis probabilistico de la misma.</p>
@@ -233,121 +234,121 @@
                     </section>
 -->
 
+            </section>
+
+
+
+            <section>
+
+                <section>
+                    <h3>Analisis Espectral</h3>
+                    <p>El <span id="him">Dominio Temporal</span>, es el más intuitivo pero el que menos información nos brinda.</p>
+                    <img src="img/cos_sum_time.png" style="float: left; background-color: white">
+                    <img src="img/cos_sum_freq.png" style="float: right; background-color: white">
+                </section>
+
+                <section>
+                    <h3>Analisis Espectral - Fourier</h3>
+                    <p style="margin-top: 1em">Es una <span id="hig">transformación</span> matemática empleada para convertir señales entre el <span id="him">dominio temporal</span> (o espacial) y el <span id="him">dominio frecuencial</span>.</p>
+                    <p>Busca aproximar una función arbitraria <span style="color: magenta">$f_{(t)}$</span> mediante otra función escalada <span style="color: magenta">$C x_{(t)}$</span>, minimizando el MSE.</p>
+                    <!--                        <img src="img/fourier.png" style="margin-top: 1cm">-->
                 </section>
 
 
+                <section>
+                    <h3>Analisis Espectral - Fourier</h3>
+                    <p>Un conjunto de funciónes que cumplen con esta característica es la función <span id="him">exponencial compleja</span>.</p>
+                    <p>$e^{-jn\omega_0t} = \cos\left(n\omega_0 t\right) + j \sin\left(n\omega_0 t\right)$</p>
+                    <table id="unaTabla" class="fragment">
+                        <tr>
+                            <td style="width: 47%; font-size: 26pt">Por lo tanto se puede entender a la <span id="hig">Transformada de Fourier</span> como una proyección de la función sobre <span id="him">infinitos senos</span> de distinta frecuencia.</td>
+                            <td>
+                                <img src="img/hqdefault.jpg" width="600" height="250" style="border: none">
+                                <!--                                    <img src="img/Ofkna.png" style="border: none">-->
+                            </td>
+                        </tr>
+                    </table>
+                    <p></p>
+
+                </section>
+
 
                 <section>
+                    <h3>Analisis Espectral - Fourier</h3>
+                    <table id="fourierTable" style="font-size: 20pt">
+                        <tr style="font-size: 25pt">
+                            <th colspan="2"></th>
+                            <th style="color: magenta">Transformada</th>
+                            <th style="color: magenta">Anti-transformada</th>
+                        </tr>
+                        <tr style="border-top: 1px solid">
+                            <td rowspan="2" style="color: deepskyblue">Señales Continuas</td>
+                            <td>
+                                <span style="color: limegreen; font-weight: bold">Periódica</span>
+                            </td>
+                            <td>
+                                $$C_{n} = \frac{1}{T_0}\int\limits_{T_0} f_{(t)} e^{-jn\omega_0t} dt$$
+                            </td>
+                            <td>
+                                $$f_{(t)} = \sum\limits_{n=-\infty}^\infty C_{n} e^{jn\omega_0t}$$
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid">
+                            <td>
+                                <span style="color: red; font-weight: bold">Aperiódica</span>
+                            </td>
+                            <td>
+                                $$F_{(\omega)} = \int\limits_{t=-\infty}^{\infty} f_{(t)} e^{-j\omega t} dt$$
+                            </td>
+                            <td>
+                                $$f_{(t)} = \frac{1}{2\pi}\int\limits_{\omega=-\infty}^\infty F_{(\omega)} e^{j\omega t} d\omega$$
+                            </td>
+                        </tr>
+                        <tr style="border-top: 1px solid">
+                            <!--                            <tr style="border-top: 1px solid">-->
+                            <td rowspan="2" style="border-bottom: 1px solid"><span style="color: deepskyblue">Señales Discretas</span></td>
+                            <td>
+                                <span style="color: limegreen; font-weight: bold">Periódica</span>
+                            </td>
+                            <td>
+                                $$C_k = \frac{1}{N_0}\sum\limits_{n=0}^{N_0} x_{[n]} e^{-jk\Omega_0 n}$$
+                            </td>
+                            <td>
+                                $$x_{[n]} = \sum\limits_{k=0}^{N_0} C_k e^{jk\Omega_0 n} dt$$
+                            </td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid">
+                            <!--                            <tr style="border-bottom: 1px solid">-->
+                            <td>
+                                <span style="color: red; font-weight: bold">Aperiódica</span>
+                            </td>
+                            <td>
+                                $$X_{(\Omega)} = \sum\limits_{n=-\infty}^\infty x_{[n]} e^{-j\Omega n} dt$$
+                            </td>
+                            <td>
+                                $$x_{[n]} = \frac{1}{2\pi} \int\limits_{2\pi} X_{(\Omega)} e^{j\Omega n} d\Omega$$
+                            </td>
+                        </tr>
+                    </table>
+                </section>
 
-                    <section>
-                        <h3>Analisis Espectral</h3>
-                        <p>El <span id="him">Dominio Temporal</span>, es el más intuitivo pero el que menos información nos brinda.</p>
-                        <img src="img/cos_sum_time.png" style="float: left; background-color: white">
-                        <img src="img/cos_sum_freq.png" style="float: right; background-color: white">
-                    </section>
 
-                    <section>
-                        <h3>Analisis Espectral - Fourier</h3>
-                        <p style="margin-top: 1em">Es una <span id="hig">transformación</span> matemática empleada para convertir señales entre el <span id="him">dominio temporal</span> (o espacial) y el <span id="him">dominio frecuencial</span>.</p>
-                        <p>Busca aproximar una función arbitraria <span style="color: magenta">$f_{(t)}$</span> mediante otra función escalada <span style="color: magenta">$C x_{(t)}$</span>, minimizando el MSE.</p>
-                        <!--                        <img src="img/fourier.png" style="margin-top: 1cm">-->
-                    </section>
-
-
-                    <section>
-                        <h3>Analisis Espectral - Fourier</h3>
-                        <p>Un conjunto de funciónes que cumplen con esta característica es la función <span id="him">exponencial compleja</span>.</p>
-                        <p>$e^{-jn\omega_0t} = \cos\left(n\omega_0 t\right) + j \sin\left(n\omega_0 t\right)$</p>
-                        <table id="unaTabla" class="fragment">
+                <section>
+                    <h3>Analisis Espectral - Fourier</h3>
+                    <h4>Representacion</h4>
+                    <div style="font-size: 25pt">
+                        <p style="text-align: left">La TF nos da una función compleja que se puede representar de forma: </p>
+                        <table id="unaTabla">
                             <tr>
-                                <td style="width: 47%; font-size: 26pt">Por lo tanto se puede entender a la <span id="hig">Transformada de Fourier</span> como una proyección de la función sobre <span id="him">infinitos senos</span> de distinta frecuencia.</td>
-                                <td>
-                                    <img src="img/hqdefault.jpg" width="600" height="250" style="border: none">
-                                    <!--                                    <img src="img/Ofkna.png" style="border: none">-->
-                                </td>
+                                <td style="color: dodgerblue">Cartesiana</td>
+                                <td style="color: indianred">Polar</td>
+                            </tr>
+                            <tr>
+                                <td>$ X_{(\omega)} = \mathbb{R}e \{X_{(\omega)}\} + j \mathbb{I}m \{X_{(\omega)}\} $</td>
+                                <td>$ X_{(\omega)} = \|X_{(\omega)}\| \angle X_{(\omega)} $</td>
                             </tr>
                         </table>
-                        <p></p>
-
-                    </section>
-
-
-                    <section>
-                        <h3>Analisis Espectral - Fourier</h3>
-                        <table id="fourierTable" style="font-size: 20pt">
-                            <tr style="font-size: 25pt">
-                                <th colspan="2"></th>
-                                <th style="color: magenta">Transformada</th>
-                                <th style="color: magenta">Anti-transformada</th>
-                            </tr>
-                            <tr style="border-top: 1px solid">
-                                <td rowspan="2" style="color: deepskyblue">Señales Continuas</td>
-                                <td>
-                                    <span style="color: limegreen; font-weight: bold">Periódica</span>
-                                </td>
-                                <td>
-                                    $$C_{n} = \frac{1}{T_0}\int\limits_{T_0} f_{(t)} e^{-jn\omega_0t} dt$$
-                                </td>
-                                <td>
-                                    $$f_{(t)} = \sum\limits_{n=-\infty}^\infty C_{n} e^{jn\omega_0t}$$
-                                </td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid">
-                                <td>
-                                    <span style="color: red; font-weight: bold">Aperiódica</span>
-                                </td>
-                                <td>
-                                    $$F_{(\omega)} = \int\limits_{t=-\infty}^{\infty} f_{(t)} e^{-j\omega t} dt$$
-                                </td>
-                                <td>
-                                    $$f_{(t)} = \frac{1}{2\pi}\int\limits_{\omega=-\infty}^\infty F_{(\omega)} e^{j\omega t} d\omega$$
-                                </td>
-                            </tr>
-                            <tr style="border-top: 1px solid">
-                                <!--                            <tr style="border-top: 1px solid">-->
-                                <td rowspan="2" style="border-bottom: 1px solid"><span style="color: deepskyblue">Señales Discretas</span></td>
-                                <td>
-                                    <span style="color: limegreen; font-weight: bold">Periódica</span>
-                                </td>
-                                <td>
-                                    $$C_k = \frac{1}{N_0}\sum\limits_{n=0}^{N_0} x_{[n]} e^{-jk\Omega_0 n}$$
-                                </td>
-                                <td>
-                                    $$x_{[n]} = \sum\limits_{k=0}^{N_0} C_k e^{jk\Omega_0 n} dt$$
-                                </td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid">
-                                <!--                            <tr style="border-bottom: 1px solid">-->
-                                <td>
-                                    <span style="color: red; font-weight: bold">Aperiódica</span>
-                                </td>
-                                <td>
-                                    $$X_{(\Omega)} = \sum\limits_{n=-\infty}^\infty x_{[n]} e^{-j\Omega n} dt$$
-                                </td>
-                                <td>
-                                    $$x_{[n]} = \frac{1}{2\pi} \int\limits_{2\pi} X_{(\Omega)} e^{j\Omega n} d\Omega$$
-                                </td>
-                            </tr>
-                        </table>
-                    </section>
-
-
-                    <section>
-                        <h3>Analisis Espectral - Fourier</h3>
-                        <h4>Representacion</h4>
-                        <div style="font-size: 25pt">
-                            <p style="text-align: left">La TF nos da una función compleja que se puede representar de forma: </p>
-                            <table id="unaTabla">
-                                <tr>
-                                    <td style="color: dodgerblue">Cartesiana</td>
-                                    <td style="color: indianred">Polar</td>
-                                </tr>
-                                <tr>
-                                    <td>$ X_{(\omega)} = \mathbb{R}e \{X_{(\omega)}\} + j \mathbb{I}m \{X_{(\omega)}\} $</td>
-                                    <td>$ X_{(\omega)} = \|X_{(\omega)}\| \angle X_{(\omega)} $</td>
-                                </tr>
-                            </table>
-                            <!--
+                        <!--
                         <dl style="margin: 0 0 0 -1em">
                             <dt style="color: dodgerblue">Cartesiana</dt>
                             <dd style="margin: 0 0 0 2em">$ X_{(\omega)} = \mathbb{R}e \{X_{(\omega)}\} + j \mathbb{I}m \{X_{(\omega)}\} $</dd>
@@ -355,104 +356,104 @@
                             <dd style="margin: 0 0 0 2em">$ X_{(\omega)} = \|X_{(\omega)}\| \angle X_{(\omega)} $</dd>
                         </dl>
 -->
-                            <p class="fragment" data-fragment-index="1" style="text-align: left">La <span id="hig">polar</span> es la más utilizada, pero suele expresarse en <span id="him">decibeles</span>:</p>
-                            <p class="fragment" data-fragment-index="1">$$\|X_{(\omega)}\|_{dB} = 20\cdot\log_{10}\left( \|X_{(\omega)}\|\right)$$</p>
-                        </div>
-                    </section>
+                        <p class="fragment" data-fragment-index="1" style="text-align: left">La <span id="hig">polar</span> es la más utilizada, pero suele expresarse en <span id="him">decibeles</span>:</p>
+                        <p class="fragment" data-fragment-index="1">$$\|X_{(\omega)}\|_{dB} = 20\cdot\log_{10}\left( \|X_{(\omega)}\|\right)$$</p>
+                    </div>
+                </section>
 
 
-                    <section>
-                        <h3>Analisis Espectral - Fourier</h3>
-                        <h4>Propiedades</h4>
-                        <div style="font-size: 25pt">
-                            <p style="text-align: left">Mirando en detalle las ecuaciones, se pueden deducir algunas propiedades importantes:</p>
-                            <ol>
-                                <li style="margin-left: -1em">Si $f_{(t)} \in \mathbb{R}e \Longrightarrow \|X_{(\omega)}\|$ es <span id="him">par</span> y $ \angle X_{(\omega)}$ es <span id="him">impar</span></li>
-                                <li style="margin-left: -1em">Si $f_{(t)}$ es <span id="him">par</span> $ \Longrightarrow \mathbb{I}m \{X_{(\omega)}\}=0$</li>
-                                <li style="margin-left: -1em">Si $f_{(t)}$ es <span id="him">impar</span> $ \Longrightarrow \mathbb{R}e \{X_{(\omega)}\}=0$</li>
+                <section>
+                    <h3>Analisis Espectral - Fourier</h3>
+                    <h4>Propiedades</h4>
+                    <div style="font-size: 25pt">
+                        <p style="text-align: left">Mirando en detalle las ecuaciones, se pueden deducir algunas propiedades importantes:</p>
+                        <ol>
+                            <li style="margin-left: -1em">Si $f_{(t)} \in \mathbb{R}e \Longrightarrow \|X_{(\omega)}\|$ es <span id="him">par</span> y $ \angle X_{(\omega)}$ es <span id="him">impar</span></li>
+                            <li style="margin-left: -1em">Si $f_{(t)}$ es <span id="him">par</span> $ \Longrightarrow \mathbb{I}m \{X_{(\omega)}\}=0$</li>
+                            <li style="margin-left: -1em">Si $f_{(t)}$ es <span id="him">impar</span> $ \Longrightarrow \mathbb{R}e \{X_{(\omega)}\}=0$</li>
 
-                            </ol>
-                        </div>
+                        </ol>
+                    </div>
 
-                    </section>
-
-
-                    <section>
-                        <h3>Analisis Espectral - Fourier</h3>
-                        <h4>Propiedades</h4>
+                </section>
 
 
-                        <table id="borderTable" style="font-size: 16pt; margin-top: 2em">
-                            <tr style=" background-color: #006622">
-                                <th>Linealidad</th>
-                                <td style="margin-left: 3em">$\alpha f(t)+\beta g(t)$</td>
-                                <td>$\alpha F(\omega )+\beta G(\omega)$</td>
-                            </tr>
-                            <tr>
-                                <th>Dualidad o Simetría</th>
-                                <td style="margin-left: 3em">$F(t)$</td>
-                                <td>$2\pi f(-\omega )$</td>
-                            </tr>
-                            <tr>
-                                <th>Escala</th>
-                                <td style="margin-left: 3em">$f(at)$</td>
-                                <td>$\frac {1}{\left|a\right|}F\left({\frac {\omega }{a}}\right)$</td>
-                            </tr>
-                            <tr>
-                                <th>Inversión en el tiempo</th>
-                                <td style="margin-left: 3em">$f^{}(-t)$</td>
-                                <td>$F^{}(-\omega )$</td>
-                            </tr>
-                            <tr style=" background-color: #006622">
-                                <th>Traslación en el tiempo</th>
-                                <td style="margin-left: 3em">$f(t-t_{0})$</td>
-                                <td>$F(\omega )e^{-j\omega t_{0}}$</td>
-                            </tr>
-                            <tr>
-                                <th>Traslación en frecuencia</th>
-                                <td style="margin-left: 3em">$f(t)e^{j\omega _{0}t}$</td>
-                                <td>$F(\omega -\omega _{0})$</td>
-                            </tr>
-                            <tr>
-                                <th>Derivación en el tiempo</th>
-                                <td style="margin-left: 3em">$\frac {\partial ^{n}f(t)}{\partial t^{n}}$</td>
-                                <td>$\left(j\omega \right)^{n}F(\omega )$</td>
-                            </tr>
-                            <tr>
-                                <th>Derivación en el frecuencia</th>
-                                <td style="margin-left: 3em">$\left(-jt\right)^{n}f(t)$</td>
-                                <td>$\frac {\partial ^{n}F(\omega )}{\partial \omega ^{n}}$</td>
-                            </tr>
-                            <tr>
-                                <th>Integración</th>
-                                <td style="margin-left: 3em">$\int \limits _{-\infty }^{t}{f(\tau )\partial \tau }$</td>
-                                <td>$\frac {F(\omega )}{j\omega }+\pi F(0)\delta (\omega )$</td>
-                            </tr>
-                            <tr style=" background-color: #006622">
-                                <th>Convolución</th>
-                                <td style="margin-left: 3em">$f(t)*g(t)$</td>
-                                <td>$F(\omega )G(\omega )$</td>
-                            </tr>
-                            <tr style=" background-color: #006622">
-                                <th>Modulación</th>
-                                <td style="margin-left: 3em">$f(t)g(t)$</td>
-                                <td>$F(\omega )*G(\omega )$</td>
-                            </tr>
-                        </table>
-                    </section>
+                <section>
+                    <h3>Analisis Espectral - Fourier</h3>
+                    <h4>Propiedades</h4>
 
 
-                    <section>
-                        <h3>Analisis Espectral - Fourier</h3>
-                        <h4>Energía</h4>
-                        <div style="font-size: 27pt">
-                            <p style="text-align: left">Para poder representar una función en series de Fourier se debe cumplir con la siguiente condición:</p>
-                            <p>$$\int \limits_{T_0} |f(t)|^2 dt \lt \infty$$</p>
+                    <table id="borderTable" style="font-size: 16pt; margin-top: 2em">
+                        <tr style=" background-color: #006622">
+                            <th>Linealidad</th>
+                            <td style="margin-left: 3em">$\alpha f(t)+\beta g(t)$</td>
+                            <td>$\alpha F(\omega )+\beta G(\omega)$</td>
+                        </tr>
+                        <tr>
+                            <th>Dualidad o Simetría</th>
+                            <td style="margin-left: 3em">$F(t)$</td>
+                            <td>$2\pi f(-\omega )$</td>
+                        </tr>
+                        <tr>
+                            <th>Escala</th>
+                            <td style="margin-left: 3em">$f(at)$</td>
+                            <td>$\frac {1}{\left|a\right|}F\left({\frac {\omega }{a}}\right)$</td>
+                        </tr>
+                        <tr>
+                            <th>Inversión en el tiempo</th>
+                            <td style="margin-left: 3em">$f^{}(-t)$</td>
+                            <td>$F^{}(-\omega )$</td>
+                        </tr>
+                        <tr style=" background-color: #006622">
+                            <th>Traslación en el tiempo</th>
+                            <td style="margin-left: 3em">$f(t-t_{0})$</td>
+                            <td>$F(\omega )e^{-j\omega t_{0}}$</td>
+                        </tr>
+                        <tr>
+                            <th>Traslación en frecuencia</th>
+                            <td style="margin-left: 3em">$f(t)e^{j\omega _{0}t}$</td>
+                            <td>$F(\omega -\omega _{0})$</td>
+                        </tr>
+                        <tr>
+                            <th>Derivación en el tiempo</th>
+                            <td style="margin-left: 3em">$\frac {\partial ^{n}f(t)}{\partial t^{n}}$</td>
+                            <td>$\left(j\omega \right)^{n}F(\omega )$</td>
+                        </tr>
+                        <tr>
+                            <th>Derivación en el frecuencia</th>
+                            <td style="margin-left: 3em">$\left(-jt\right)^{n}f(t)$</td>
+                            <td>$\frac {\partial ^{n}F(\omega )}{\partial \omega ^{n}}$</td>
+                        </tr>
+                        <tr>
+                            <th>Integración</th>
+                            <td style="margin-left: 3em">$\int \limits _{-\infty }^{t}{f(\tau )\partial \tau }$</td>
+                            <td>$\frac {F(\omega )}{j\omega }+\pi F(0)\delta (\omega )$</td>
+                        </tr>
+                        <tr style=" background-color: #006622">
+                            <th>Convolución</th>
+                            <td style="margin-left: 3em">$f(t)*g(t)$</td>
+                            <td>$F(\omega )G(\omega )$</td>
+                        </tr>
+                        <tr style=" background-color: #006622">
+                            <th>Modulación</th>
+                            <td style="margin-left: 3em">$f(t)g(t)$</td>
+                            <td>$F(\omega )*G(\omega )$</td>
+                        </tr>
+                    </table>
+                </section>
 
-                            <p class="fragment" data-fragment-index="1" style="text-align: left">De cumplirse esta condición, podemos calcular la energía de la misma en el espectro mediante la <span id="him" style="text-align: left">Identidad de Parseval</span></p>
-                            <p class="fragment" data-fragment-index="1">$$\int \limits _{-\infty }^{\infty }{\left|f(t)\right|^{2}\partial t={\frac {1}{2\pi }}}\int \limits _{-\infty }^{\infty }{\left|F(\omega )\right|^{2}\partial \omega }$$</p>
 
-                            <!--
+                <section>
+                    <h3>Analisis Espectral - Fourier</h3>
+                    <h4>Energía</h4>
+                    <div style="font-size: 27pt">
+                        <p style="text-align: left">Para poder representar una función en series de Fourier se debe cumplir con la siguiente condición:</p>
+                        <p>$$\int \limits_{T_0} |f(t)|^2 dt \lt \infty$$</p>
+
+                        <p class="fragment" data-fragment-index="1" style="text-align: left">De cumplirse esta condición, podemos calcular la energía de la misma en el espectro mediante la <span id="him" style="text-align: left">Identidad de Parseval</span></p>
+                        <p class="fragment" data-fragment-index="1">$$\int \limits _{-\infty }^{\infty }{\left|f(t)\right|^{2}\partial t={\frac {1}{2\pi }}}\int \limits _{-\infty }^{\infty }{\left|F(\omega )\right|^{2}\partial \omega }$$</p>
+
+                        <!--
                         <p class="fragment" data-fragment-index="1" style="text-align: left"><span id="him">P.L.Dirichlet</span> impuso 3 condiciónes opcionales:</p>
                         <ol class="fragment" data-fragment-index="1" style="margin-left: 2em">
                             <li>Debe ser inegrable sobre el periodo.$ \quad \int_{T_0} |f(t)| dt \lt \infty$</li>
@@ -460,115 +461,113 @@
                             <li>Debe haber un numero finito de discontinuidades.</li>
                         </ol>
 -->
-                        </div>
-                    </section>
-
-
-                    <section>
-                        <h3>Analisis Espectral - Fourier</h3>
-                        <h4>Algoritmo</h4>
-                        <p>Cooley–Tukey desarrollaron en 1965 un algoritmo que reduce la complejidad computacional de la DFT y la IDFT, de <span style="color: darkgoldenrod">$O(N^2)$</span> a <span style="color: darkgoldenrod">$O(N \log(N))$</span>. Sin
-                            embargo, pone como restricción que la cantidad de muestras debe ser de <span id="him">potencia de 2</span>.</p>
-                        <div class="fragment">
-                            <p>Además, utilizando la propiedad de las señales reales</p>
-                            <p>$X_{[k]}^*=X_{[-k]}$</p>
-                            <p style="text-align: left">se puede acelerar aun más (Sorensen, 1987).</p>
-                        </div>
-                    </section>
-
+                    </div>
                 </section>
 
 
                 <section>
-                    <section>
-                        <h2>Señales tipicas</h2>
-                        <p style="text-align: left">Existen señales que debido a sus características, son muy utilizadas en el area:</p>
-                        <ul>
-                            <li>Coseno/Seno</li>
-                            <li>Cuadrada</li>
-                            <li>Delta</li>
-                            <li>Escalon</li>
-                        </ul>
-                    </section>
+                    <h3>Analisis Espectral - Fourier</h3>
+                    <h4>Algoritmo</h4>
+                    <p>Cooley–Tukey desarrollaron en 1965 un algoritmo que reduce la complejidad computacional de la DFT y la IDFT, de <span style="color: darkgoldenrod">$O(N^2)$</span> a <span style="color: darkgoldenrod">$O(N \log(N))$</span>. Sin embargo, pone como restricción que la cantidad de muestras debe ser de <span id="him">potencia de 2</span>.</p>
+                    <div class="fragment">
+                        <p>Además, utilizando la propiedad de las señales reales</p>
+                        <p>$X_{[k]}^*=X_{[-k]}$</p>
+                        <p style="text-align: left">se puede acelerar aun más (Sorensen, 1987).</p>
+                    </div>
+                </section>
 
-                    <section>
-                        <h3>Señales tipicas - Coseno</h3>
-                        <p>$$f_{(t)} = A \cos (\omega_0 t) \qquad C_n = C_{-n} = \frac{A}{2}$$</p>
-
-                        <!--                        $$F_{(\omega)} = \frac{A \pi}{2} \left[ \delta (\omega - \omega_0) + \delta (\omega - \omega_0)\right]$$-->
-                        <img src="img/coseno_time.png" height="270px" style="float: left; background-color: white">
-                        <img src="img/coseno_freq.png" height="270px" style="float: right; background-color: white">
-                    </section>
-
-                    <section>
-                        <h3>Señales tipicas - Pulso</h3>
-                        <p style="font-size: 25pt">$$\prod {\left({\frac {t}{T}}\right)}=\left\{{\begin{aligned}&amp;1,\left|t\right|\leq {}^{T}\!\!\diagup \!\!{}_{2}\;\\&amp;0,\left|t\right|>{}^{T}\!\!\diagup \!\!{}_{2}\;\\\end{aligned}}\right. \qquad F_{(\omega)}=\frac {2\sin
-                            \left(\frac{\omega^T}{2}\right)}{\omega} = T \text{sinc} \left( T \frac {\omega }{2\pi }\right) $$
-                        </p>
+            </section>
 
 
+            <section>
+                <section>
+                    <h2>Señales tipicas</h2>
+                    <p style="text-align: left">Existen señales que debido a sus características, son muy utilizadas en el area:</p>
+                    <ul>
+                        <li>Coseno/Seno</li>
+                        <li>Cuadrada</li>
+                        <li>Delta</li>
+                        <li>Escalon</li>
+                    </ul>
+                </section>
 
-                        <table id="unaTabla">
-                            <tr>
-                                <td style="margin: none">
-                                    <img src="img/pulso_time.png" height="200px" style="background-color: white">
-                                </td>
-                                <td style="margin: none">
-                                    <img src="img/pulso_freq.png" height="200px" style="background-color: white">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="margin: none">
-                                    <img src="img/square.gif" height="150">
-                                </td>
-                                <td style="margin: none">
-                                    <img src="img/square_fft.gif" height="150">
-                                </td>
-                            </tr>
-                        </table>
+                <section>
+                    <h3>Señales tipicas - Coseno</h3>
+                    <p>$$f_{(t)} = A \cos (\omega_0 t) \qquad C_n = C_{-n} = \frac{A}{2}$$</p>
 
-                    </section>
+                    <!--                        $$F_{(\omega)} = \frac{A \pi}{2} \left[ \delta (\omega - \omega_0) + \delta (\omega - \omega_0)\right]$$-->
+                    <img src="img/coseno_time.png" height="270px" style="float: left; background-color: white">
+                    <img src="img/coseno_freq.png" height="270px" style="float: right; background-color: white">
+                </section>
 
-                    <section>
-                        <h3>Señales tipicas - Delta</h3>
-                        <p>$$f_{(t)} = \delta_{(t)} \quad F_{(\omega)}=1$$</p>
-
-                        <img src="img/delta.png" height="300px">
-                    </section>
-
-                    <section>
-                        <h3>Señales tipicas - Escalon </h3>
-                        <p>$$u(t)=\left\{{\begin{aligned}&amp;1,t>0\\&amp;0,t
-                            <0\\\end{aligned}}\right. \Longrightarrow \mathbb {F} [u(t)]={\frac {1}{j\omega }}+\underbrace {\pi \delta (\omega )} _{\text{a veces se omite}}$$</p>
+                <section>
+                    <h3>Señales tipicas - Pulso</h3>
+                    <p style="font-size: 25pt">$$\prod {\left({\frac {t}{T}}\right)}=\left\{{\begin{aligned}&amp;1,\left|t\right|\leq {}^{T}\!\!\diagup \!\!{}_{2}\;\\&amp;0,\left|t\right|>{}^{T}\!\!\diagup \!\!{}_{2}\;\\\end{aligned}}\right. \qquad F_{(\omega)}=\frac {2\sin \left(\frac{\omega^T}{2}\right)}{\omega} = T \text{sinc} \left( T \frac {\omega }{2\pi }\right) $$
+                    </p>
 
 
-                                <img src="img/escalon_time.png" width="450px" style="float: left; background-color: white">
-                                <img src="img/escalon_freq.png" width="450px" style="float: right; background-color: white">
-                    </section>
 
-                    <section>
-                        <h3>Señales tipicas - Otras </h3>
-                        <table id="unaTabla">
-                            <tr>
-                                <td>
-                                    <img src="img/fft8.png" height="290px" style="background-color: white">
-                                </td>
-                                <td>
-                                    <img src="img/fft9.png" height="290px" style="background-color: white">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="img/fft10.jpg" height="290px" style="background-color: white">
-                                </td>
-                                <td>
-                                    <img src="img/fft11.png" height="290px" style="background-color: white">
-                                </td>
-                            </tr>
-                        </table>
-                    </section>
+                    <table id="unaTabla">
+                        <tr>
+                            <td style="margin: none">
+                                <img src="img/pulso_time.png" height="200px" style="background-color: white">
+                            </td>
+                            <td style="margin: none">
+                                <img src="img/pulso_freq.png" height="200px" style="background-color: white">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="margin: none">
+                                <img src="img/square.gif" height="150">
+                            </td>
+                            <td style="margin: none">
+                                <img src="img/square_fft.gif" height="150">
+                            </td>
+                        </tr>
+                    </table>
 
-                    <!--
+                </section>
+
+                <section>
+                    <h3>Señales tipicas - Delta</h3>
+                    <p>$$f_{(t)} = \delta_{(t)} \quad F_{(\omega)}=1$$</p>
+
+                    <img src="img/delta.png" height="300px">
+                </section>
+
+                <section>
+                    <h3>Señales tipicas - Escalon </h3>
+                    <p>$$u(t)=\left\{{\begin{aligned}&amp;1,t>0\\&amp;0,t
+                        <0\\\end{aligned}}\right. \Longrightarrow \mathbb {F} [u(t)]={\frac {1}{j\omega }}+\underbrace {\pi \delta (\omega )} _{\text{a veces se omite}}$$</p>
+
+
+                            <img src="img/escalon_time.png" width="450px" style="float: left; background-color: white">
+                            <img src="img/escalon_freq.png" width="450px" style="float: right; background-color: white">
+                </section>
+
+                <section>
+                    <h3>Señales tipicas - Otras </h3>
+                    <table id="unaTabla">
+                        <tr>
+                            <td>
+                                <img src="img/fft8.png" height="290px" style="background-color: white">
+                            </td>
+                            <td>
+                                <img src="img/fft9.png" height="290px" style="background-color: white">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="img/fft10.jpg" height="290px" style="background-color: white">
+                            </td>
+                            <td>
+                                <img src="img/fft11.png" height="290px" style="background-color: white">
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+
+                <!--
                     <section>
                         <h3>Señales tipicas - Rampa </h3>
                         <img src="img/cos_sum_time2.png" style="float: left; background-color: white">
@@ -576,231 +575,232 @@
                     </section>
 -->
 
+            </section>
+
+            <section>
+                <section>
+                    <h2>Sistemas LTI</h2>
+                    <p>Un <span id="him">sistema</span> es un proceso que transforma una señal de entrada $x_{(t)}$ (o $x_{[n]}$) en una de salida $y_{(t)}$ (o $y_{[n]}$).</p>
+                    <p style="margin-top: 1em">$y_{(t)} = T\left[ x_{(t)} \right] \qquad y_{[n]} = T\left[ x_{[n]} \right]$</p>
+                </section>
+
+
+                <section>
+                    <h3>Sistemas LTI - Definicion</h3>
+                    <p>El estudio de DSP se concentra en <span id="him">Sistemas Lineales e Invariantes en el Tiempo</span> (LTI). </p>
+                    <p style="text-align: left">Esto se reduce en las siguientes propiedades:</p>
+                    <ul style="margin-left: 0em">
+                        <li class="fragment">
+                            Superposición <span style="margin-left: 2em; font-size: 20pt">$T\left[ x_{1[n]} \cdot \alpha + x_{2[n]} \cdot \beta \right] = y_{1[n]} \cdot \alpha + y_{2[n]} \cdot \beta$</span>
+                        </li>
+                        <li class="fragment">
+                            Invariabilidad <span style="margin-left: 2em; font-size: 20pt"> $T\left[ x_{[n-n_0]} \right] = y_{[n-n_0]}$</span>
+                        </li>
+                        <li class="fragment">
+                            Causalidad <span style="margin-left: 4em; font-size: 20pt"> $T\left[ \delta_{[n]} \right] = 0 \quad \forall n \lt 0$</span>
+                        </li>
+                        <li class="fragment">
+                            Estabilidad <span style="margin-left: 4em; font-size: 20pt"> $\|T\left[ \delta_{[n]} \right]\| \lt \infty$</span>
+                        </li>
+                    </ul>
+                </section>
+
+
+                <section>
+                    <h3>Sistemas LTI - Respuesta al Impulso</h3>
+                    <div style="font-size: 27pt">
+                        <p style="text-align: left">Una señal puede descomponerse en una serie de deltas:</p>
+                        <p>$$x_{[n]} = \sum_{k=-\infty}^\infty x_{[k]} \delta_{[n-k]} \qquad x_{(t)} = \int \limits_{T=-\infty}^\infty x_{(\tau)} \delta_{(t-\tau)} d\tau$$</p>
+
+                        <p class="fragment" data-fragment-index="1" style="text-align: left">Entonces:</p>
+                        <p class="fragment" data-fragment-index="1">
+                            $$ y_{[n]} = T\left[\sum_{k=-\infty}^\infty x_{[k]} \delta_{[n-k]}\right] \quad \Longrightarrow \quad y_{[n]} = \sum_{k=-\infty}^\infty x_{[k]} T\left[\delta_{[n-k]}\right] $$
+                        </p>
+                        <p class="fragment" data-fragment-index="2">
+                            $$ h_{[n-k]} = T\left[ \delta_{[n-k]} \right] \quad \Longrightarrow \quad y_{[n]} = \sum_{k=-\infty}^\infty x_{[k]} h_{[n-k]} $$
+                        </p>
+
+                        <!--                            <p style="text-align: left">donde:</p>-->
+                        <!--                            <p>$$T\left[ \delta_{[n-k]} \right]$$</p>-->
+                    </div>
                 </section>
 
                 <section>
-                    <section>
-                        <h2>Sistemas LTI</h2>
-                        <p>Un <span id="him">sistema</span> es un proceso que transforma una señal de entrada $x_{(t)}$ (o $x_{[n]}$) en una de salida $y_{(t)}$ (o $y_{[n]}$).</p>
-                        <p style="margin-top: 1em">$y_{(t)} = T\left[ x_{(t)} \right] \qquad y_{[n]} = T\left[ x_{[n]} \right]$</p>
-                    </section>
+                    <h3>Sistemas LTI - Respuesta al Impulso</h3>
+                    <p style="font-size: 25pt; text-align: left">Por lo tanto, cualquier <span id="him">Sistema LTI</span> se puede definir por su respuesta al impulso.
+                        <span class="fragment" data-fragment-index="1">Y la salida de ese sistema estará dada por la <span id="him">convolución</span> de la entrada por su respuesa al impulso: </span>
+                    </p>
 
+                    <p class="fragment" data-fragment-index="1">$$y_{[n]} = x_{[n]}*h_{[n]} = \sum_{k=-\infty}^\infty x_{[k]} h_{[n-k]} $$</p>
+                    <p class="fragment" data-fragment-index="2" style="font-size: 25pt; text-align: left">Finalmente, recordando la propiedad de convolución de la Transformada de Fourier:</p>
+                    <p class="fragment" data-fragment-index="2" style="color: gold">
+                        $$ y_{[n]}=x_{[n]}*h_{[n]} \Longrightarrow Y_{[k]}=X_{[k]}H_{[k]} $$
+                    </p>
+                </section>
 
-                    <section>
-                        <h3>Sistemas LTI - Definicion</h3>
-                        <p>El estudio de DSP se concentra en <span id="him">Sistemas Lineales e Invariantes en el Tiempo</span> (LTI). </p>
-                        <p style="text-align: left">Esto se reduce en las siguientes propiedades:</p>
-                        <ul style="margin-left: 0em">
-                            <li class="fragment">
-                                Superposición <span style="margin-left: 2em; font-size: 20pt">$T\left[ x_{1[n]} \cdot \alpha + x_{2[n]} \cdot \beta \right] = y_{1[n]} \cdot \alpha + y_{2[n]} \cdot \beta$</span>
-                            </li>
-                            <li class="fragment">
-                                Invariabilidad <span style="margin-left: 2em; font-size: 20pt"> $T\left[ x_{[n-n_0]} \right] = y_{[n-n_0]}$</span>
-                            </li>
-                            <li class="fragment">
-                                Causalidad <span style="margin-left: 4em; font-size: 20pt"> $T\left[ \delta_{[n]} \right] = 0 \quad \forall n \lt 0$</span>
-                            </li>
-                            <li class="fragment">
-                                Estabilidad <span style="margin-left: 4em; font-size: 20pt"> $\|T\left[ \delta_{[n]} \right]\| \lt \infty$</span>
-                            </li>
-                        </ul>
-                    </section>
+            </section>
 
-
-                    <section>
-                        <h3>Sistemas LTI - Respuesta al Impulso</h3>
-                        <div style="font-size: 27pt">
-                            <p style="text-align: left">Una señal puede descomponerse en una serie de deltas:</p>
-                            <p>$$x_{[n]} = \sum_{k=-\infty}^\infty x_{[k]} \delta_{[n-k]} \qquad x_{(t)} = \int \limits_{T=-\infty}^\infty x_{(\tau)} \delta_{(t-\tau)} d\tau$$</p>
-
-                            <p class="fragment" data-fragment-index="1" style="text-align: left">Entonces:</p>
-                            <p class="fragment" data-fragment-index="1">
-                                $$ y_{[n]} = T\left[\sum_{k=-\infty}^\infty x_{[k]} \delta_{[n-k]}\right] \quad \Longrightarrow \quad y_{[n]} = \sum_{k=-\infty}^\infty x_{[k]} T\left[\delta_{[n-k]}\right] $$
-                            </p>
-                            <p class="fragment" data-fragment-index="2">
-                                $$ h_{[n-k]} = T\left[ \delta_{[n-k]} \right] \quad \Longrightarrow \quad y_{[n]} = \sum_{k=-\infty}^\infty x_{[k]} h_{[n-k]} $$
-                            </p>
-
-                            <!--                            <p style="text-align: left">donde:</p>-->
-                            <!--                            <p>$$T\left[ \delta_{[n-k]} \right]$$</p>-->
-                        </div>
-                    </section>
-
-                    <section>
-                        <h3>Sistemas LTI - Respuesta al Impulso</h3>
-                        <p style="font-size: 25pt; text-align: left">Por lo tanto, cualquier <span id="him">Sistema LTI</span> se puede definir por su respuesta al impulso.
-                            <span class="fragment" data-fragment-index="1">Y la salida de ese sistema estará dada por la <span id="him">convolución</span> de la entrada por su respuesa al impulso: </span>
-                        </p>
-
-                        <p class="fragment" data-fragment-index="1">$$y_{[n]} = x_{[n]}*h_{[n]} = \sum_{k=-\infty}^\infty x_{[k]} h_{[n-k]} $$</p>
-                        <p class="fragment" data-fragment-index="2" style="font-size: 25pt; text-align: left">Finalmente, recordando la propiedad de convolución de la Transformada de Fourier:</p>
-                        <p class="fragment" data-fragment-index="2" style="color: gold">
-                            $$ y_{[n]}=x_{[n]}*h_{[n]} \Longrightarrow Y_{[k]}=X_{[k]}H_{[k]} $$
-                        </p>
-                    </section>
-
+            <section>
+                <section>
+                    <h2>Muestreo</h2>
+                    <p>Para digitalizar una señal, debemos <span id="hig">discretizar</span> tanto la variable temporal como su amplitud.</p>
+                    <p>Esta tarea la realizan los <span id="him">Analog to Digital Converters</span> (ADC).</p>
+                </section>
+                <section>
+                    <h2>Muestreo</h2>
+                    <table id="unaTabla">
+                        <tr>
+                            <th style="color: darkgoldenrod">Sample</th>
+                            <th style="color: darkgoldenrod">Sample & Hold</th>
+                        </tr>
+                        <tr>
+                            <th><img src="img/digitalization.png" width="400px" height="175px" style="background-color: white; border:0px; float: left;"></th>
+                            <th><img src="img/sample_hold.png" width="400px" height="175px" style="background-color: white; border:0px; float:right"></th>
+                        </tr>
+                    </table>
+                    <p class="fragment" data-fragment-index="2" style="font-size: 30pt">Equivale a multiplicar la misma por deltas desplazados</p>
+                    <p class="fragment" data-fragment-index="2">$x[n] = x_{(t)} \cdot \delta_{(t-nT)} \quad \Longrightarrow \quad X[k] = X(\omega) * \delta_{(k \omega_0)}$</p>
                 </section>
 
                 <section>
-                    <section>
-                        <h2>Muestreo</h2>
-                        <p>Para digitalizar una señal, debemos <span id="hig">discretizar</span> tanto la variable temporal como su amplitud.</p>
-                        <p>Esta tarea la realizan los <span id="him">Analog to Digital Converters</span> (ADC).</p>
-                    </section>
-                    <section>
-                        <h2>Muestreo</h2>
-                        <table id="unaTabla">
-                            <tr>
-                                <th style="color: darkgoldenrod">Sample</th>
-                                <th style="color: darkgoldenrod">Sample & Hold</th>
-                            </tr>
-                            <tr>
-                                <th><img src="img/digitalization.png" width="400px" height="175px" style="background-color: white; border:0px; float: left;"></th>
-                                <th><img src="img/sample_hold.png" width="400px" height="175px" style="background-color: white; border:0px; float:right"></th>
-                            </tr>
-                        </table>
-                        <p class="fragment" data-fragment-index="2" style="font-size: 30pt">Equivale a multiplicar la misma por deltas desplazados</p>
-                        <p class="fragment" data-fragment-index="2">$x[n] = x_{(t)} \cdot \delta_{(t-nT)} \quad \Longrightarrow \quad X[k] = X(\omega) * \delta_{(k \omega_0)}$</p>
-                    </section>
+                    <h2>Muestreo</h2>
+                    <p>La teoría de muestreo de <span style="color: darkgoldenrod">Nyquist–Shannon</span> establece que la frecuencia de muestreo debe ser por lo menos el <span id="him">doble</span> que la <span id="him">frecuencia maxima</span> de la señal, para no perder información.</p>
+                    <!--                        <p>$f_{s} \ge 2 \cdot argmax\left(f_{x(t)}\right)$</p>-->
+                    <p>$f_{s} \ge 2 f_{max}$</p>
+                </section>
 
-                    <section>
-                        <h2>Muestreo</h2>
-                        <p>La teoría de muestreo de <span style="color: darkgoldenrod">Nyquist–Shannon</span> establece que la frecuencia de muestreo debe ser por lo menos el <span id="him">doble</span> que la <span id="him">frecuencia maxima</span> de la
-                            señal, para no perder información.</p>
-                        <!--                        <p>$f_{s} \ge 2 \cdot argmax\left(f_{x(t)}\right)$</p>-->
-                        <p>$f_{s} \ge 2 f_{max}$</p>
-                    </section>
+                <section>
+                    <h2>Muestreo</h2>
+                    <img src="img/sampling.png" style="background-color: white">
+                </section>
 
-                    <section>
-                        <h2>Muestreo</h2>
-                        <img src="img/sampling.png" style="background-color: white">
-                    </section>
+                <section>
+                    <h2>Muestreo - Aliasing</h2>
+                    <p>El fenomeno que se produce cuando hay un <span id="him">under sampling</span> se denomina <span id="hig">Aliasing</span>, derivado de <i>Alias</i>.</p>
+                    <img src="img/alias.png" style="background-color: white; border:0px; float: left;">
+                </section>
 
-                    <section>
-                        <h2>Muestreo - Aliasing</h2>
-                        <p>El fenomeno que se produce cuando hay un <span id="him">under sampling</span> se denomina <span id="hig">Aliasing</span>, derivado de <i>Alias</i>.</p>
-                        <img src="img/alias.png" style="background-color: white; border:0px; float: left;">
-                    </section>
-
-                    <section>
-                        <h2>Muestreo - Aliasing</h2>
-                        <p>En imagenes, se lo conoce como efecto <span id="hig">Moire</span>.</p>
-                        <img src="img/Moire_1.jpg" width="350px" style="border:0px; float: left">
-                        <img src="img/Moire_2.jpg" width="350px" style="border:0px; float: right">
-                    </section>
+                <section>
+                    <h2>Muestreo - Aliasing</h2>
+                    <p>En imagenes, se lo conoce como efecto <span id="hig">Moire</span>.</p>
+                    <img src="img/Moire_1.jpg" width="350px" style="border:0px; float: left">
+                    <img src="img/Moire_2.jpg" width="350px" style="border:0px; float: right">
+                </section>
 
 
-                    <!--
+                <!--
                     <section>
                         <h2>Muestreo - Windowing</h2>
 
                     </section>
 -->
-                </section>
+            </section>
 
+
+
+            <section>
+                <section>
+                    <h2>Transformadas</h2>
+                    <table id="borderTable" style="margin-top: 1em">
+                        <tr>
+                            <th style="border: none"></th>
+                            <th style="color: deepskyblue">
+                                Señales Continuas
+                            </th>
+                            <th style="color: red">
+                                Señales Discretas
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="color: deepskyblue">
+                                Energía Finita
+                            </th>
+                            <th>
+                                <span class="fragment" data-fragment-index="1">Transformada Continua de Fourier</span>
+                            </th>
+                            <th>
+                                <span class="fragment" data-fragment-index="2">Transformada Discreta de Fourier</span>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="color: red">
+                                Energía Infinita
+                            </th>
+                            <th>
+                                <span class="fragment" data-fragment-index="3">Transformada de Laplace</span>
+                            </th>
+                            <th>
+                                <span class="fragment" data-fragment-index="4">Transformada Z</span>
+                            </th>
+                        </tr>
+                    </table>
+                </section>
 
 
                 <section>
-                    <section>
-                        <h2>Transformadas</h2>
-                        <table id="borderTable" style="margin-top: 1em">
-                            <tr>
-                                <th style="border: none"></th>
-                                <th style="color: deepskyblue">
-                                    Señales Continuas
-                                </th>
-                                <th style="color: red">
-                                    Señales Discretas
-                                </th>
-                            </tr>
-                            <tr>
-                                <th style="color: deepskyblue">
-                                    Energía Finita
-                                </th>
-                                <th>
-                                    <span class="fragment" data-fragment-index="1">Transformada Continua de Fourier</span>
-                                </th>
-                                <th>
-                                    <span class="fragment" data-fragment-index="2">Transformada Discreta de Fourier</span>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th style="color: red">
-                                    Energía Infinita
-                                </th>
-                                <th>
-                                    <span class="fragment" data-fragment-index="3">Transformada de Laplace</span>
-                                </th>
-                                <th>
-                                    <span class="fragment" data-fragment-index="4">Transformada Z</span>
-                                </th>
-                            </tr>
-                        </table>
-                    </section>
-
-
-                    <section>
-                        <h3>Transformadas - Laplace</h3>
-                        <p>Es una extensión de la transformada de Fourier, ya que solo agrega un termino </p>
-                        <p>$$F_{(\omega)} = \int\limits_{t=-\infty}^{\infty} f_{(t)} e^{-st} dt \qquad s = \sigma+j\omega$$</p>
-                    </section>
-
-                    <section>
-                        <h3>Transformadas - Z</h3>
-                        <p>$$X_{(z)} = \sum_{n=-\infty}^\infty x_{[n]}z^{-n} \qquad z=\rho e^{j\Omega}$$</p>
-                    </section>
-
-
+                    <h3>Transformadas - Laplace</h3>
+                    <p>Es una extensión de la transformada de Fourier, ya que solo agrega un termino </p>
+                    <p>$$F_{(\omega)} = \int\limits_{t=-\infty}^{\infty} f_{(t)} e^{-st} dt \qquad s = \sigma+j\omega$$</p>
                 </section>
 
-            </div>
+                <section>
+                    <h3>Transformadas - Z</h3>
+                    <p>$$X_{(z)} = \sum_{n=-\infty}^\infty x_{[n]}z^{-n} \qquad z=\rho e^{j\Omega}$$</p>
+                </section>
+
+
+            </section>
+
         </div>
+    </div>
 
 
 
-        <script src="lib/js/head.min.js"></script>
-        <script src="js/reveal.js"></script>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
 
-        <script>
-            Reveal.addEventListener('fragmentshown', function(event) {
-                document.getElementById("postfragment").style.background = "forestgreen";
-            });
-        </script>
+    <script>
+        Reveal.addEventListener('fragmentshown', function(event) {
+            document.getElementById("postfragment").style.background = "forestgreen";
+        });
 
-        <script>
-            // More info about config & dependencies:
-            // - https://gitdub.com/hakimel/reveal.js#configuration
-            // - https://github.com/hakimel/reveal.js#dependencies
-            Reveal.initialize({
-                // Push each slide change to the browser history
-                history: true,
-                progress: false,
+    </script>
 
-                math: {
-                    mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
-                    config: 'TeX-AMS_HTML-full' // See http://docs.mathjax.org/en/latest/config-files.html
+    <script>
+        // More info about config & dependencies:
+        // - https://gitdub.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            // Push each slide change to the browser history
+            history: true,
+            progress: false,
+
+            math: {
+                mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+                config: 'TeX-AMS_HTML-full' // See http://docs.mathjax.org/en/latest/config-files.html
+            },
+
+            dependencies: [{
+                    src: 'plugin/markdown/marked.js'
                 },
-
-                dependencies: [{
-                        src: 'plugin/markdown/marked.js'
-                    },
-                    {
-                        src: 'plugin/markdown/markdown.js'
-                    },
-                    {
-                        src: 'plugin/math/math.js',
-                        async: true
-                    },
-                    {
-                        src: 'plugin/highlight/highlight.js',
-                        async: true,
-                        callback: function() {
-                            hljs.initHighlightingOnLoad();
-                        }
+                {
+                    src: 'plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'plugin/math/math.js',
+                    async: true
+                },
+                {
+                    src: 'plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function() {
+                        hljs.initHighlightingOnLoad();
                     }
-                ],
-            });
-        </script>
-    </body>
+                }
+            ],
+        });
+
+    </script>
+</body>
 
 </html>
