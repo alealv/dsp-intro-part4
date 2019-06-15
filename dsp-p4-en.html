@@ -1,0 +1,807 @@
+<!doctype html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title> Digital Signal Processing (DSP) </title>
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/black.css">
+        <link rel="stylesheet" href="css/ale.css">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        </script>
+
+    </head>
+
+    <body>
+        <div class="reveal">
+            <div class="slides">
+
+                <section data-background-image="img/dsp.jpg" data-state="dimbg">
+                    <h1>Introduction to Digital Signal Processing</h1>
+                    <h2 style="background-color: darkred">Part 4</h2>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Control Theory Concepts</h2>
+                        <p>
+                            <span id="him">Control Theory</span> is a subfield of ​​engineering and mathematics that analyzes the effects and interactions of dynamic systems and deals with them to achieve a desired objective.
+                        </p>
+
+                        <div class="fragment">
+                            <p style="text-align: left">They are divided into three groups:</p>
+                            <ul>
+                                <li class="fragment">
+                                    Classical Control Theory
+                                </li>
+                                <li class="fragment">
+                                    Modern Control Theory
+                                </li>
+                                <li class="fragment">
+                                    Robust Control Theory
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Control Theory Concepts</h2>
+                        <dl>
+                            <dt style="color: magenta; font-style: italic">
+                                System
+                            </dt>
+                            <dd style="font-size: 25pt">
+                                Combination of elements that act together and perform a specific objective.
+                            </dd>
+                            <dt class="fragment" data-fragment-index="2" style="color: magenta; font-style: italic">
+                                Plant
+                            </dt>
+                            <dd style="font-size: 25pt" class="fragment" data-fragment-index="2">
+                                It refers to the system that you want to control.
+                            </dd>
+                            <dt class="fragment" data-fragment-index="3" style="color: magenta; font-style: italic">
+                                Control
+                            </dt>
+                            <dd style="font-size: 25pt" class="fragment" data-fragment-index="3">
+                                It is the aggregate a <span id="hig">system</span> that modifies the <span id="hig"> control variable </span> with respect to a desired value, through an indication coming from the
+                                <span id="hig"> control signal</span> or <span id="hig"> manipulated variable </span>.
+                            </dd>
+                        </dl>
+                    </section>
+
+
+                    <section>
+                        <h2>Control Theory Concepts</h2>
+                        <p>There are two common kinds of control systems: </p>
+                        <table id="unaTabla">
+                            <tr>
+                                <th width="30%" style="color: indianred">
+                                    Open loop
+                                </th>
+                                <td>
+                                    <image src="img/sdc_1.png" style="background-color: white; background-size: 1000px 1000px;">
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <td colspan="2">
+                                    the output variable does not affect the control action.
+                                </td>
+                            </tr> -->
+                            <tr>
+                                <th width="30%" style="color: deepskyblue">
+                                    Closed loop
+                                </th>
+                                <td>
+                                    <image src="img/sdc_2.png" style="background-color: white">
+                                </td>
+                            </tr>
+                            <!-- <tr>
+                                <td colspan="2">
+                                    the output variable does affect the control action by means of a <span id="him"> feedback </span>.
+                                </td>
+                            </tr> -->
+                        </table>
+                    </section>
+
+                    <section>
+                        <h2>Control Theory Concepts</h2>
+                        <p style="text-align: left">
+                            The theory of <span id="hig"> modern control </span> is based on the description of a system in terms of <span id="hig"> n first order differential equations </span>, where they interact:
+                        </p>
+                        <ul>
+                            <dt id="him" style="float: left"> $ u $ </dt>
+                            <dd>- Input variables </dd>
+                            <dt id="him" style="float: left"> $ y $ </dt>
+                            <dd>- Output variables </dd>
+                            <dt id="him" style="float: left"> $ x $ </dt>
+                            <dd>- State variables </dd>
+                            <dt id="him" style="float: left"> $ t $ </dt>
+                            <dd>- Time </dd>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Control Theory Concepts</h2>
+                        <p style="text-align: left">
+                            We can write this as:
+                        </p>
+                        <p>
+                            $$ \left\{\begin{aligned} \mathbf{\dot{x}}_{(t)} &amp;= \mathbf{f}_{(\mathbf{x},\mathbf{u},t)} \\ \mathbf{y}_{(t)} &amp;= \mathbf{g}_{(\mathbf{x},\mathbf{u},t)} \end{aligned} \right. $$
+                        </p>
+
+                        <p class="fragment" data-fragment-index="1" style="text-align: left">
+                            The <span id="hig"> Plant </span> is modeled in the <span id="him"> State-space </span> as:
+                        </p>
+                        <p class="fragment" data-fragment-index="1">
+                            $$ \left\{\begin{aligned} \dot{\mathbf{x}}_{(t)} &amp;= A \mathbf{x}_{(t)} + B \mathbf{u}_{(t)} \\ \mathbf{y}_{(t)} &amp;= C \mathbf{x}_{(t)} + D \mathbf{u}_{(t)} \end{aligned} \right. $$
+                        </p>
+                        <!-- <table id="unaTabla" class="fragment" data-fragment-index="1">
+                            <tr>
+                                <th style="color: indianred">
+                                    Continuous Time
+                                </th>
+                                <th style="color: deepskyblue">
+                                    Discrete Time
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>$$ \left\{\begin{aligned} \dot{\mathbf{x}}_{(t)} &amp;= A \mathbf{x}_{(t)} + B \mathbf{u}_{(t)} \\ \mathbf{y}_{(t)} &amp;= C \mathbf{x}_{(t)} + D \mathbf{u}_{(t)} \end{aligned} \right. $$
+                                </td>
+                                <td>$$ \left\{\begin{aligned} \mathbf{x}_{[k+1]} &amp;= A \mathbf{x}_{[k]} + B \mathbf{u}_{[k]} \\ \mathbf{y}_{[k]} &amp;= C \mathbf{x}_{[k]} + D \mathbf{u}_{[k]} \end{aligned} \right. $$
+                                </td>
+                            </tr>
+                        </table> -->
+                        <!-- <img src="img/Typical_State_Space_model.png" width="650px" style="background-color: white"> -->
+                    </section>
+
+
+                    <section>
+                        <h2>Control Theory Concepts</h2>
+                        <p>
+                            In <span style="color: indianred"> Continuous Time </span> the <span id="him"> Laplace Transform </span> is used:
+                        </p>
+                        <p>$$ \left\{\begin{aligned} s\mathbf{X}_{(s)} &amp;= A \mathbf{X}_{(s)} + B \mathbf{U}_{(s)} \\ \mathbf{Y}_{(s)} &amp;= C \mathbf{X}_{(s)} + D \mathbf{U}_{(s)} \end{aligned} \right. $$
+                        </p>
+                        <p>
+                            In <span style="color: deepskyblue"> Discrete Time </span> the <span id="him"> Transformed Z </span> is used:
+                        </p>
+                        <p>$$ \left\{\begin{aligned} \mathbf{x}_{[k+1]} &amp;= A \mathbf{x}_{[k]} + B \mathbf{u}_{[k]} \\ \mathbf{y}_{[k]} &amp;= C \mathbf{x}_{[k]} + D \mathbf{u}_{[k]} \end{aligned} \right. $$
+                        </p>
+                    </section>
+
+
+                    <section>
+                        <h2>Control Theory Concepts</h2>
+                        <img src="img/Typical_State_Space_model.png" width="750px" style="background-color: white; margin-top: 1em">
+
+                        <div style="text-align: left; float: left; width: 45%; font-size: 23pt; margin-top: -10pt">
+                            <p>$\color{magenta}{\mathbf{x}_{(t)}} \,$ is the State Vector</p>
+                            <p>$\color{magenta}{\mathbf{y}_{(t)}} \,$ is the Output Vector</p>
+                            <p>$\color{magenta}{\mathbf{u}_{(t)}} \,$ is the Control Vector</p>
+                            <!-- <p>$\color{magenta}{\mathbf{r}_{(t)}} \,$ is the Vector de Referencia </p> -->
+                            <!-- <p>$\color{magenta}{\mathbf{\omega}} \,$ is the rudio de la planta.</p> -->
+                            <!-- <p>$\color{magenta}{\mathbf{\nu}} \,$ is the rudio de la planta.</p> -->
+                        </div>
+                        <div style="text-align: left; float: right; width: 55%; font-size: 23pt; margin-top: -10pt">
+                            <p>$\color{darkgoldenrod}{\mathbf{A}_{(t)}} $ is the State Matrix</p>
+                            <p>$\color{darkgoldenrod}{\mathbf{B}_{(t)}} $ is the Input Matrix</p>
+                            <p>$\color{darkgoldenrod}{\mathbf{C}_{(t)}} $ is the Ouput Matrix</p>
+                            <p>$\color{darkgoldenrod}{\mathbf{D}_{(t)}} $ is the Direct Transmition Matrix</p>
+                        </div>
+                    </section>
+
+
+                    <section>
+                        <h2>Control Theory Concepts</h2>
+                        <p>
+                            Adding the <span id="him"> feedback </span> and assuming it is a <span id="him"> LTI system </span>, we are left with:
+                        </p>
+                        <img src="img/Typical_State_Space_model_feedback.png" width="650px" style="background-color: white">
+                        <p>
+                            where $\color{darkgoldenrod}{\mathbf{K}} $ is the feedback array
+                        </p>
+                    </section>
+
+
+                    <section>
+                        <h2>Control Theory Concepts</h2>
+                        <p style="text-align: left">
+                            Being:
+                        </p>
+                        <p>
+                            $$ \mathbf{u} = - K \mathbf{x}$$
+                        </p>
+                        <p style="text-align: left">
+                            We can write this as:
+                        </p>
+                        <p>
+                            $$
+                             \left\{
+                                 \begin{aligned}
+                                 \mathbf{x}_{[k+1]} &amp;= (A - BK) \mathbf{x}_{[k]}
+                                 \\
+                                 \mathbf{y}_{[k]} &amp;= C \mathbf{x}_{[k]} + D \mathbf{u}_{[k]}
+                                 \end{aligned}
+                                  \right. $$
+                        </p>
+                    </section>
+
+
+                    <section>
+                        <h2>Control Theory Concepts</h2>
+                        <p>
+                            There are cases where not all <span id="hig">state variables</span> are available for feedback.
+                        </p>
+                        <p class="fragment">
+                             This is solved with <span id="him">state observers</span>.
+                        </p>
+                    </section>
+
+
+                    <section>
+                        <h2>Control Theory Concepts</h2>
+                        <img src="img/Typical_State_Space_model_estimator.png" width="550px" style="background-color: white">
+                        <p>
+                            $$
+                            \left\{
+                                \begin{aligned}
+                                \mathbf{\tilde{x}}_{[k+1]} &amp;= A \mathbf{\tilde{x}}_{[k]} + B \mathbf{u}_{[k]} + \color{magenta}{K_e} (y_{[k]} - \color{magenta}{C\mathbf{\tilde{x}}_{[k]}})
+                                \\
+                                \mathbf{x}_{[k+1]} &amp;= A \mathbf{x}_{[k]} + B \mathbf{u}_{[k]}
+                                \\
+                                \mathbf{y}_{[k]} &amp;= C \mathbf{x}_{[k]}
+                                \end{aligned}
+                            \right.
+                            $$
+                        </p>
+                        <!-- <p id="hig">
+                            Normally $D$ is considered 0
+                        </p> -->
+                    </section>
+
+
+                    <section>
+                        <h2>Control Theory Concepts</h2>
+                        <img src="img/Typical_State_Space_model_estimator_feedback.png" width="550px" style="background-color: white">
+                        <p>
+                            $$
+                            \left\{
+                                \begin{aligned}
+                                \mathbf{x}_{[k+1]} &amp;= (A -BK)\mathbf{x}_{[k]} + B K \color{magenta}{(\mathbf{x}_{[k]}-\mathbf{\tilde{x}}_{[k]})}
+                                \\
+                                \mathbf{y}_{[k]} &amp;= C \mathbf{x}_{[k]}
+                                \end{aligned}
+                            \right.
+                            $$
+                        </p>
+                    </section>
+
+
+
+
+                </section>
+
+
+
+
+                <section>
+
+                    <section>
+                        <h2>Bayesian filters</h2>
+                        <p style="text-align: left">
+                            Deterministic models <span id="hig"> are not enough </span> for 3 main reasons:
+                        </p>
+                        <ul>
+                            <li class="fragment">No mathematical model is perfect.</li>
+                            <li class="fragment">In every model there are disturbances that can not be modeled deterministically.</li>
+                            <li class="fragment">The sensors are not perfect.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Bayesian filters</h2>
+                        <p>
+                            What happens if we add noise to the system?
+                        </p>
+                        <p>
+                            $$ \left\{\begin{aligned} \mathbf{\dot{x}}_{(t)} &amp;= \mathbf{f}_{(\mathbf{x},\mathbf{u},\mathbf{\omega},t)} \\ \mathbf{y}_{(t)} &amp;= \mathbf{g}_{(\mathbf{x},\mathbf{u},\mathbf{\nu},t)} \end{aligned} \right. $$
+                        </p>
+                        <p class="fragment">
+                            We must define the problem as a <span id="him"> Stochastic Process </span>
+                        </p>
+                    </section>
+
+
+                    <section>
+                        <h3>Bayesian filters - MM</h3>
+                        <p>
+                            A <span id="hbm">Markov Model</span> (MM) process of <span id="hig"> first order </span>, only depends on <span id="him"> previous status </span>.
+                        </p>
+                        <p>
+                            $$ p\left( x_k|x_{k-1},x_{k-2},\dots,x_{0} \right) = p\left( x_k|x_{k-1} \right) $$
+                        </p>
+                        <img src="img/markov.png" style="background-color: white">
+                    </section>
+
+
+                    <section>
+                        <h3>Bayesian filters - HMM</h3>
+                        <p>
+                            When the state is not directly <span id="hig"> observable </span>, it must be obtained indirectly. This model is known as <span id="him"> Hidden Markov Model </span> (HMM)
+                        </p>
+                        <img src="img/markov2.png" style="background-color: white">
+                    </section>
+                    <section>
+                        <h3>Bayesian filters - HMM</h3>
+                        <p style="text-align: left">
+                            The measurement in the kth time step depends only on the current state:
+                        </p>
+                        <p>
+                            $$ p({\textbf {z}}_{k}|{\textbf {x}}_{k},{\textbf {x}}_{{k-1}},\dots ,{\textbf {x}}_{{0}})=p({\textbf {z}}_{k}|{\textbf {x}}_{{k}}) $$
+                        </p>
+                        <img src="img/markov2.png" style="background-color: white">
+                    </section>
+
+
+                    <section>
+                        <h3>Bayesian filters - HMM</h3>
+                        <p style="text-align: left">
+                            Adding the entry of our system we have:
+                        </p>
+                        <p>
+                            $$ \begin{aligned} \mathbf{\dot{x}}_{(t)} &amp;= \mathbf{f}_{(\mathbf{x},\mathbf{u},\mathbf{\omega},t)} \quad \color{magenta}{\text{state equation}} \\ \mathbf{y}_{(t)} &amp;= \mathbf{g}_{(\mathbf{x},\mathbf{u},\mathbf{\nu},t)} \quad \color{magenta}{\text{measurment equation}} \end{aligned} $$
+                        </p>
+                        <img src="img/markov3.png" style="background-color: white" height="300px">
+                    </section>
+
+
+                    <section>
+                        <h3>Bayesian filters - HMM</h3>
+                        <p style="text-align: left">
+                            We seek to find out:
+                        </p>
+                        <p>
+                            $$ p \left( \mathbf{x}_k | \mathbf{y}_{1:k},\mathbf{u}_{1:k} \right)$$
+                        </p>
+                        <p class="fragment" data-fragment-index="1" style="text-align: left">
+                            Working on this equation we come to:
+                        </p>
+                        <p class="fragment" data-fragment-index="1">
+                            $$
+                            \underbrace { p \left( \mathbf{x}_k | \mathbf{y}_{1:k},\mathbf{u}_{1:k} \right) } _{\color{magenta}{\text{posterior probability}}}
+                            =
+                            \frac{
+                                \overbrace{ p\left({\mathbf{y}}_{k}|{\mathbf{x}}_{{k}}\right)}^{\color{magenta}{\text{measurment model}}}
+                                \overbrace{ p\left(\mathbf{x}_k|\mathbf{y}_{1:k-1}, \mathbf{u}_{1:k}\right)}^{\color{magenta}{\text{prior probability}}}
+                                }
+                                {
+                                    \underbrace {p\left(\mathbf{y}_k|\mathbf{y}_{1:k-1}\right)}_{\color{magenta}{\text{normalization}}}
+                                }
+                                $$
+                        </p>
+                    </section>
+
+
+                    <section>
+                        <h3>Bayesian filters</h3>
+                        <p style="text-align: left">
+                            Where:
+                        </p>
+                        <dl style="font-size: 25pt">
+                            <dt id="hig">
+                            Standardization factor
+                            </dt>
+                            <dd>
+                                $$ p\left(\textbf{y}_k|\textbf{y}_{1:k-1}\right) = \int p\left(\textbf{y}_k|\textbf{x}_k\right) p\left( \textbf{x}_k|\textbf{y}_{1:k-1}\right) d\textbf{x}_k $$
+                            </dd>
+                            <dt id="hig">
+                            A priori probability
+                            </dt>
+                            <dd>
+                                $$ p\left(\textbf {x}_k|\textbf {y}_{1:k-1}, \textbf{u}_{1:k}\right) = \int p\left(\textbf{x}_k|\textbf{x}_{k-1}, \textbf{u}_k \right) \underbrace{p\left(\textbf{x}_{k-1} | \textbf{y}_{1:k-1},\textbf{u}_{1:k-1} \right)}_{\color{magenta}{\text{previous posterior}}} d\textbf{x}_{k-1} $$
+                            </dd>
+                        </dl>
+                    </section>
+
+
+                    <section>
+                        <h3>Bayesian filters - Recursive</h3>
+                        <img src="img/recursive_bayesian.png" style="background-color: white">
+                    </section>
+
+
+                    <section>
+                        <h3>Bayesian Filter - Example</h3>
+                        <img src="img/kalman_ex1.png" style="background-color: white">
+                        <p>
+                            For this case, we start in a state of total uncertainty (<span id="hig">uniform distribution</span>).
+                        </p>
+                        <p>
+                            $$ p_{(x)} = \frac{1}{A} \quad A \gt 0$$
+                        </p>
+                        <p>
+                            where <i> A </i> is the length of our universe.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Bayesian Filter - Example</h3>
+                        <img src="img/kalman_ex2.png" style="background-color: white">
+                        <p>
+                            We take a measurement with our sensor and update our knowledge according to:
+                        </p>
+                        <p>
+                            $$ bel(x) = n \cdot p(y_k|x_k) \cdot \overline{bel}(x_k)$$
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Bayesian Filter - Example</h3>
+                        <img src="img/kalman_ex3.png" style="background-color: white">
+                        <p>
+                            Then the robot moves
+                        </p>
+                        <p>
+                            $$ \overline{bel}(x_k) = \int p \left( \textbf{x}_k | \textbf{x}_{k-1} \right) bel(x_{k-1}) d\textbf{x}_{k-1} $$
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Bayesian Filter - Example</h3>
+                        <img src="img/kalman_ex4.png" style="background-color: white">
+                        <p>
+                            We measure again
+                        </p>
+                        <p>
+                            $$ bel(x) = n \cdot p(y_k|x_k) \cdot \overline{bel}(x_k)$$
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Bayesian Filter - Example</h3>
+                        <img src="img/kalman_ex5.png" style="background-color: white">
+                        <p>
+                            We move again
+                        </p>
+                        <p>
+                            $$ \overline{bel}(x_k) = \int p \left( \textbf{x}_k | \textbf{x}_{k-1} \right) bel(x_{k-1}) d\textbf{x}_{k-1} $$
+                        </p>
+                    </section>
+
+                </section>
+
+
+                <section>
+
+                    <section>
+                        <h2>Kalman filter</h2>
+                        <p>
+                            It is a <span id="him"> recursive algorithm </span> developed by <i> Rudolf E. Kalman </i> in 1960 that allows to obtain the best estimator of the <span id="him"> hidden state </span> of a <span id="him"> linear dynamic system </span>,
+                            when this is subjected to <span id="him"> additive white noise </span>, minimizing the mean square error.
+                        </p>
+                    </section>
+
+
+                    <!-- <section>
+                        <h3>Kalman Filter - Features</h3>
+                        <ul style="text-align: left">
+                            <li>Used in systems:
+                                <ul>
+                                    <li>Discreet</li>
+                                    <li>Linear</li>
+                                    <li>With additive white noise</li>
+                                </ul>
+                            </li>
+                            <li>Allow <span id="him"> sensor fusion </span>.</li>
+                            <li>Only use:</li>
+                            <ul>
+                                <ul>
+                                    <li>
+                                        Model it from the system
+                                    </li>
+                                    <li>
+                                        Previous status
+                                    </li>
+                                    <li>
+                                        Uncertainty of the model
+                                    </li>
+                                    <li>
+                                        Current measurements
+                                    </li>
+                                    <li>
+                                        Uncertainty of measurement
+                                    </li>
+                                </ul>
+                            </ul>
+                        </ul>
+                    </section> -->
+
+
+                    <section>
+                        <h3>Kalman Filter - Conditions</h3>
+                        <p style="text-align: left">
+                            The Kalman filter is a <span id="hig"> Bayesian filter </span> but it restricts the problem in 3 conditions:
+                        </p>
+                        <ul>
+                            <li>
+                                It must be a linear model.
+                            </li>
+                            <li>
+                                The system and measurement noise should be:
+                            </li>
+                            <ul>
+                                <li>
+                                    Independents
+                                </li>
+                                <li>
+                                    Additives
+                                </li>
+                                <li>
+                                    White
+                                </li>
+                                <li>
+                                    Gaussians
+                                </li>
+                            </ul>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Kalman Filter - Conditions</h3>
+                        <dl>
+                            <dt id="him">
+                                Linear system
+                            </dt>
+                            <dd>
+                                $$ T_{[\alpha x + \beta y]} = \alpha T_{[x]} + \beta T_{[y]}$$
+                            </dd>
+                            <dt id="him">
+                                White noise
+                            </dt>
+                            <dd>
+                                $$ {S_x}_{(\tau)} = S_0 \delta_{(\tau)} \Longrightarrow {S_x}_{(\omega)} = S_0 $$
+                            </dd>
+                            <dt id="him">
+                                Gaussian noise
+                            </dt>
+                            <dd>
+                                $$ {f_\mathbf{x}}_{(x_1,\cdots,x_n)} =\frac{1}{\sqrt{(2\pi)^n |\Sigma|}} e^{-\frac{1}{2} (\mathbf{x} - \mathbf{\mu})^T \Sigma^{-1} (\mathbf{x} - \mathbf{\mu})} $$
+                            </dd>
+                        </dl>
+                    </section>
+
+
+                    <section>
+                        <h3>Kalman Filter - Model</h3>
+                        <p style="text-align: left">
+                            Then, we can write the problem as:
+                        </p>
+                        <p>
+                            $$
+                            \left\{
+                                \begin{aligned}
+                                    \mathbf{x}_{[k+1]} &amp;= A \mathbf{x}_{[k]} + B \mathbf{u}_{[k]} + \color{magenta}{\omega_{[k]}}
+                                    \\
+                                    \mathbf{y}_{[k]} &amp;= C \mathbf{x}_{[k]} + \color{magenta}{\nu_{[k]}}
+                                \end{aligned}
+                            \right.
+                            $$
+                        </p>
+                        <p style="text-align: left">
+                            With:
+                        </p>
+                        <p id="hig">
+                            $$
+                            \begin{aligned}
+                                p_{(\omega)} &amp;\sim \mathcal{N}_{(0,Q)}
+                                \\
+                                p_{(\nu)} &amp;\sim \mathcal{N}_{(0,R)}
+                            \end{aligned}
+                            $$
+                        </p>
+                    </section>
+
+
+                    <section>
+                        <h3>Kalman filter - Equations</h3>
+                        <p>
+                            $$ \hat{x}_k = \underbrace{A \hat{x}_{k-1} + B u_k}_{\color{magenta}{\hat{x}_k^-}} + K_k (y_k - C (\underbrace{A \hat{x}_{k-1} + B u_k}_{\color{magenta}{\hat{x}_k^-}} ))  $$
+                        </p>
+                        <p style="text-align: left">
+                            where:
+                        </p>
+                        <p>
+                             $$ \begin{aligned}
+                                \hat{x}_k^- &amp;\text{ is the probability a } \color{darkgoldenrod}{\text{priori}}
+                             \\
+                                \hat{x}_k &amp;\text{ is the probability a } \color{darkgoldenrod}{\text{posteriori}}
+                                \end{aligned}
+                             $$
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Kalman filter - Equations</h3>
+                        <img src="img/kalman_eq.png" style="background-color: white">
+                    </section>
+
+                    <section>
+                        <h3>Kalman filter - Explanation</h3>
+                        <p style="text-align: left">
+                            Since Kalman requires that the distributions be Gaussian <span id="him"> $ \ mathcal {N} _ {(0, \ sigma)} $ </span>, we will have to:
+                        </p>
+                        <p style="text-align: left">
+                            1- The estimate to <span id="hig"> priori </span>:
+                        </p>
+                        <p>
+                            $$ p(\hat{x}_k^-) = \int p (x_k | x_{k-1}) \; p(\hat{x}_{k-1}) \; dx_{k-1} $$
+                        </p>
+                        <p class="fragment" style="text-align: left; margin-left: 1em">
+                            which is a convolution between two Gaussians.
+                        </p>
+                        <p>
+                            <span style="color: deepskyblue" class="fragment"> Movement Model </span> <span id="him" class="fragment"> We lose information! </span>
+                        </p>
+                    </section>
+
+
+                    <section>
+                        <h3>Kalman filter - Explanation</h3>
+                        <p style="text-align: left">
+                            2- The estimation of the <span id="hig"> posteriori </span>:
+                        </p>
+                        <p>
+                            $$ p(\hat{x}_k) \propto p(y_k | x_k) \cdot p(\hat{x}_k^-)$$
+                        </p>
+                        <p class="fragment" style="text-align: left; margin-left: 1em">
+                            it is a multiplication between Gaussians.
+                        </p>
+                        <p>
+                            <span style="color: deepskyblue" class="fragment"> Observation Model </span> <span id="him" class="fragment"> We gain information! </span>
+                        </p>
+                    </section>
+
+
+                    <section>
+                        <h3>Kalman filter - Explanation</h3>
+                        <p style="text-align: left">
+                            Working on the <span id="hig"> Observation Model </span> above, we see that if we call:
+                        </p>
+                        <p>
+                            $$ p(\hat{x}_k) = f_{(x)} \cdot g_{(x)} $$
+                        </p>
+                        <p class="fragment" style="text-align: left">
+                            we have left:
+                        </p>
+                        <p class="fragment">
+                            $$ p(\hat{x}_k) =
+                            \frac {1}{\sigma_f {\sqrt {2\pi }}} e^{-{\frac {1}{2}}\left({\frac {x-\mu_f }{\sigma_f }}\right)^{2}}
+                            \cdot
+                            \frac {1}{\sigma_g {\sqrt {2\pi }}} e^{-{\frac {1}{2}}\left({\frac {x-\mu_g }{\sigma_g }}\right)^{2}}
+                             $$
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Kalman filter - Explanation</h3>
+                        <p style="text-align: left">
+                            We obtain:
+                        </p>
+                        <p>
+                            $$ bel(x) = \frac {S_{fg}} {\sigma_{fg} {\sqrt {2\pi }}} \; e^{-{\frac {1}{2}}\left({\frac {x-\mu_{fg} }{\sigma_{fg} }}\right)^{2}}
+                            $$
+                            <!-- S_{fg} = \frac{1}{\sqrt{2\pi\sigma_f^2\sigma_g^2}} \; e^{-{\frac {1}{2}}\left({\frac {\mu_f-\mu_g }{\sigma_f^2 + \sigma_g^2}}\right)^{2}} -->
+                        </p>
+                        <p class="fragment" style="text-align: left; margin-left: 1em">
+                            That is, a new Gaussian where:
+                        </p>
+                        <p class="fragment" id="hig">
+                            $$ \mu_{fg} = \frac{\mu_f \sigma_g^2 + \mu_g \sigma_f^2}{\sigma_f^2 + \sigma_g^2}
+                            \qquad
+                            \sigma_{fg}^2 = \frac{\sigma_f^2 \sigma_g^2}{\sigma_f^2 + \sigma_g^2}$$
+                        </p>
+                    </section>
+
+
+                    <section>
+                        <h3>Kalman filter - Explanation</h3>
+                        <img src="img/kalman_example.png" style="background-color: white; width: 150%">
+                    </section>
+
+
+                    <section>
+                        <h3>Kalman filter - Applications</h3>
+                        <p style="text-align: left"> There are many applications, but it is mainly used for: </p>
+                        <ul style="text-align: left; margin-left: -5em">
+                            <li>Tracking objects</li>
+                            <li>Economy</li>
+                            <li>Navigation</li>
+                            <li>Artificial vision</li>
+                            <li>Fusion of sensors</li>
+                        </ul>
+                    </section>
+
+                </section>
+
+                <section>
+                    <h1>QUESTIONS?</h1>
+                </section>
+
+                <section>
+                    <h1>WAS VERY HARD?</h1>
+                </section>
+
+                <section>
+                    <h1>NEXT PARTICULATE FILTER</h1>
+                </section>
+
+                <section>
+                    <h1>THANKS!</h1>
+                </section>
+
+
+
+            </div>
+        </div>
+
+
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            Reveal.addEventListener('fragmentshown', function(event) {
+                document.getElementById("postfragment").style.background = "forestgreen";
+            });
+        </script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://gitdub.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                // Push each slide change to the browser history
+                history: true,
+                progress: false,
+
+                math: {
+                    mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+                    config: 'TeX-AMS_HTML-full' // See http://docs.mathjax.org/en/latest/config-files.html
+                },
+
+                dependencies: [{
+                        src: 'plugin/markdown/marked.js'
+                    },
+                    {
+                        src: 'plugin/markdown/markdown.js'
+                    },
+                    {
+                        src: 'plugin/math/math.js',
+                        async: true
+                    },
+                    {
+                        src: 'plugin/highlight/highlight.js',
+                        async: true,
+                        callback: function() {
+                            hljs.initHighlightingOnLoad();
+                        }
+                    }
+                ],
+            });
+        </script>
+    </body>
+
+</html>
