@@ -86,12 +86,12 @@ table {
 }
 
 #hbm {
-    font-style: italic;
+    font-style: bold;
     color: magenta;
 }
 
 #hbg {
-    font-style: italic;
+    font-style: bold;
     color: darkgoldenrod;
 }
 
