@@ -489,8 +489,7 @@
                     <section>
                         <h2>Kalman filter</h2>
                         <p>
-                            It is a <span id="him"> recursive algorithm </span> developed by <i> Rudolf E. Kalman </i> in 1960 that allows to obtain the best estimator of the <span id="him"> hidden state </span> of a <span id="him"> linear dynamic system </span>,
-                            when this is subjected to <span id="him"> additive white noise </span>, minimizing the mean square error.
+                            It is a <span id="him">recursive algorithm</span> developed by <i>Rudolf E. Kalman</i> in 1960 that allows to obtain the best estimator of the <span id="him">hidden state</span> of a <span id="him">linear dynamic system</span>, when this is subjected to <span id="him">additive white noise</span>, minimizing the mean square error.
                         </p>
                     </section>
 
@@ -505,7 +504,7 @@
                                     <li>With additive white noise</li>
                                 </ul>
                             </li>
-                            <li>Allow <span id="him"> sensor fusion </span>.</li>
+                            <li>Allow <span id="him">sensor fusion</span>.</li>
                             <li>Only use:</li>
                             <ul>
                                 <ul>
@@ -641,10 +640,10 @@
                     <section>
                         <h3>Kalman filter - Explanation</h3>
                         <p style="text-align: left">
-                            Since Kalman requires that the distributions be Gaussian <span id="him"> $ \ mathcal {N} _ {(0, \ sigma)} $ </span>, we will have to:
+                            Since Kalman requires that the distributions be Gaussian <span id="him">$\mathcal{N}_{(0,\sigma)}$</span>, we will have to:
                         </p>
                         <p style="text-align: left">
-                            1- The estimate to <span id="hig"> priori </span>:
+                            1- The <span id="hig">prior</span> estimate:
                         </p>
                         <p>
                             $$ p(\hat{x}_k^-) = \int p (x_k | x_{k-1}) \; p(\hat{x}_{k-1}) \; dx_{k-1} $$
@@ -653,7 +652,7 @@
                             which is a convolution between two Gaussians.
                         </p>
                         <p>
-                            <span style="color: deepskyblue" class="fragment"> Movement Model </span> <span id="him" class="fragment"> We lose information! </span>
+                            <span style="color: deepskyblue" class="fragment">Movement Model</span> <span id="him" class="fragment">We lose information!</span>
                         </p>
                     </section>
 
@@ -661,7 +660,7 @@
                     <section>
                         <h3>Kalman filter - Explanation</h3>
                         <p style="text-align: left">
-                            2- The estimation of the <span id="hig"> posteriori </span>:
+                            2- The <span id="hig">posterior</span> estimate:
                         </p>
                         <p>
                             $$ p(\hat{x}_k) \propto p(y_k | x_k) \cdot p(\hat{x}_k^-)$$
@@ -670,7 +669,7 @@
                             it is a multiplication between Gaussians.
                         </p>
                         <p>
-                            <span style="color: deepskyblue" class="fragment"> Observation Model </span> <span id="him" class="fragment"> We gain information! </span>
+                            <span style="color: deepskyblue" class="fragment">Observation Model</span> <span id="him" class="fragment">We gain information!</span>
                         </p>
                     </section>
 
@@ -678,7 +677,7 @@
                     <section>
                         <h3>Kalman filter - Explanation</h3>
                         <p style="text-align: left">
-                            Working on the <span id="hig"> Observation Model </span> above, we see that if we call:
+                            Working on the <span id="hig">Observation Model</span> above, we see that if we call:
                         </p>
                         <p>
                             $$ p(\hat{x}_k) = f_{(x)} \cdot g_{(x)} $$
@@ -741,13 +740,9 @@
                 </section>
 
                 <section>
-                    <h1>WAS VERY HARD?</h1>
+                    <h1>WAS IT HARD?</h1>
                 </section>
-
-                <section>
-                    <h1>NEXT PARTICULATE FILTER</h1>
-                </section>
-
+                
                 <section>
                     <h1>THANKS!</h1>
                 </section>
